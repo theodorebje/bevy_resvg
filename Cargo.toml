@@ -1,0 +1,26 @@
+[package]
+name = "bevy_resvg"
+authors = ["Theodore Bjernhed <uik1475@edu.kunskapsskolan.se>"]
+edition = "2024"
+version = "0.0.0"
+readme = "README.md"
+repository = "https://github.com/theodorebje/bevy_resvg"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+bevy = { version = "0.18.0", features = ["dynamic_linking", "wayland"] }
+resvg = "0.46.0"
+
+# Enable a small amount of optimization in the dev profile.
+[profile.dev]
+opt-level = 1
+
+# Enable a large amount of optimization in the dev profile for dependencies.
+[profile.dev.package."*"]
+opt-level = 3
+
+[lints.clippy]
+needless_pass_by_value = { priority = 1, level = "allow" } # Bevy freaks out over references
+nursery = "deny"
+pedantic = "deny"
+type_complexity = { priority = 1, level = "allow" }        # Bevy queries are inherently complex

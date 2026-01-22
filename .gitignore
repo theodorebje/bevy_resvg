@@ -1,0 +1,3 @@
+/target
+# Don't use Cargo.lock for libraries
+Cargo.lock
