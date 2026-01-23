@@ -8,4 +8,8 @@ pub enum SvgError {
     Io(#[from] std::io::Error),
     #[error("failed to load an SVG: {0}")]
     Svg(#[from] usvg::Error),
+    #[error("SVG is empty")]
+    Empty,
 }
+
+pub(crate) type Result<T> = ::std::result::Result<T, SvgError>;

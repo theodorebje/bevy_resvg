@@ -1,5 +1,8 @@
 use bevy::prelude::*;
-use bevy_resvg::{asset::SvgAsset, component::SvgComponent, plugin::SvgPlugin};
+use bevy_resvg::{
+    plugin::SvgPlugin,
+    raster::{asset::SvgRasterAsset, component::SvgRasterComponent},
+};
 
 fn main() {
     App::new()
@@ -9,7 +12,7 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgAsset> = asset_server.load("transparent.svg");
+    let svg: Handle<SvgRasterAsset> = asset_server.load("transparent.svg");
     commands.spawn(Camera2d);
-    commands.spawn(SvgComponent(svg));
+    commands.spawn(SvgRasterComponent(svg));
 }

@@ -1,4 +1,4 @@
-use crate::asset::SvgAsset;
+use crate::{error::SvgError, vector::asset::SvgVectorAsset};
 use bevy::{
     asset::{AssetLoader, LoadContext, io::Reader},
     prelude::*,
@@ -7,12 +7,12 @@ use bevy::{
 use resvg::usvg::{Options, Tree};
 
 #[derive(Default, TypePath)]
-pub struct SvgAssetLoader;
+pub struct SvgVectorAssetLoader;
 
-impl AssetLoader for SvgAssetLoader {
-    type Asset = SvgAsset;
+impl AssetLoader for SvgVectorAssetLoader {
+    type Asset = SvgVectorAsset;
     type Settings = ();
-    type Error = crate::error::SvgError;
+    type Error = SvgError;
 
     fn load(
         &self,
@@ -25,7 +25,7 @@ impl AssetLoader for SvgAssetLoader {
             reader.read_to_end(&mut buf).await?;
             let options = Options::default();
             let tree = Tree::from_data(&buf, &options)?;
-            Ok(SvgAsset(tree))
+            Ok(SvgVectorAsset(tree))
         })
     }
 }
