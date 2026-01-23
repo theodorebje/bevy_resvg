@@ -6,19 +6,20 @@ version = "0.0.0"
 readme = "README.md"
 repository = "https://github.com/theodorebje/bevy_resvg"
 license = "MIT OR Apache-2.0"
+rust-version = "1.89"
 
 [dependencies]
-bevy = { version = "0.18.0", features = ["dynamic_linking", "wayland"] }
-resvg = "0.46.0"
-thiserror = "2.0.18"
+bevy = { version = "0.18", default-features = false, features = [
+    "bevy_sprite_render",
+    "std",
+] }
+resvg = ">=0.42, ^0.46"
+thiserror = ">=1.0.0, <3.0.0"
 
-# Enable a small amount of optimization in the dev profile.
-[profile.dev]
-opt-level = 1
-
-# Enable a large amount of optimization in the dev profile for dependencies.
-[profile.dev.package."*"]
-opt-level = 3
+[dev-dependencies]
+bevy = { version = "0.18", default-features = false, features = [
+    "default_platform",
+] }
 
 [lints.clippy]
 needless_pass_by_value = { priority = 1, level = "allow" } # Bevy freaks out over references
