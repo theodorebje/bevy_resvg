@@ -1,0 +1,31 @@
+use crate::asset::SvgAsset;
+use bevy::{
+    asset::{AssetLoader, LoadContext, io::Reader},
+    prelude::*,
+    tasks::ConditionalSendFuture,
+};
+use resvg::usvg::{Options, Tree};
+
+#[derive(Default, TypePath)]
+pub struct SvgAssetLoader;
+
+impl AssetLoader for SvgAssetLoader {
+    type Asset = SvgAsset;
+    type Settings = ();
+    type Error = crate::error::SvgError;
+
+    fn load(
+        &self,
+        reader: &mut dyn Reader,
+        _settings: &Self::Settings,
+        _load_context: &mut LoadContext,
+    ) -> impl ConditionalSendFuture<Output = Result<Self::Asset, Self::Error>> {
+        Box::pin(async move {
+            let mut buf = Vec::new();
+            reader.read_to_end(&mut buf).await?;
+            let options = Options::default();
+            let tree = Tree::from_data(&buf, &options)?;
+            Ok(SvgAsset(tree))
+        })
+    }
+}
