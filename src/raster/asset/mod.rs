@@ -1,5 +1,5 @@
 /// The [`AssetLoader`](bevy::asset::AssetLoader) for [`SvgRasterAsset`]s.
-pub mod loader;
+pub(crate) mod loader;
 
 use bevy::prelude::*;
 
