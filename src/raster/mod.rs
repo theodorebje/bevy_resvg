@@ -1,5 +1,4 @@
-/// The [`Asset`](bevy::asset::Asset) and
-/// [`AssetLoader`](bevy::asset::AssetLoader) for rasterising
+/// The [`Asset`](bevy::asset::Asset) used for rasterising
 /// [`SVG`](https://en.wikipedia.org/wiki/SVG) files.
 pub mod asset;
 /// The [`Component`](bevy::ecs::component::Component) that one needs to wrap

@@ -1,7 +1,7 @@
 use resvg::usvg;
 use thiserror::Error;
 
-/// An error that occurs when loading, parsing, or rasterising a texture.
+/// An error that is returned when loading, parsing, or rasterising a texture.
 #[derive(Error, Debug)]
 pub enum SvgError {
     #[error("could not read file: {0}")]
