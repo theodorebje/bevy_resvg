@@ -7,6 +7,13 @@ use bevy::{
     tasks::ConditionalSendFuture,
 };
 
+/// The [`AssetLoader`] for [`SvgRasterAsset`]s.
+///
+/// Loads an [`SVG`](https://en.wikipedia.org/wiki/SVG) file using an
+/// [`SvgVectorAssetLoader`] into an
+/// [`SvgVectorAsset`](crate::vector::asset::SvgVectorAsset), and then
+/// rasterises it into a [`SvgRasterAsset`] containing an [`Image`] using
+/// [`resvg`]'s [`render`](resvg::render) function.
 #[derive(Default, TypePath)]
 pub struct SvgRasterAssetLoader;
 

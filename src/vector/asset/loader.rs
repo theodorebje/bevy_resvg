@@ -6,6 +6,10 @@ use bevy::{
 };
 use resvg::usvg::{Options, Tree};
 
+/// The [`AssetLoader`] for [`SvgVectorAsset`]s.
+///
+/// Loads an [`SVG`](https://en.wikipedia.org/wiki/SVG) file into an
+/// [`SvgVectorAsset`] containing a [`Tree`].
 #[derive(Default, TypePath)]
 pub struct SvgVectorAssetLoader;
 

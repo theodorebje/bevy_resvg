@@ -4,6 +4,9 @@ use crate::raster::{
 };
 use bevy::prelude::*;
 
+/// The [`Plugin`] for initialising the
+/// [Rasterised](https://en.wikipedia.org/wiki/Raster_graphics)
+/// [`Asset`] and [`AssetLoader`](bevy::asset::AssetLoader).
 pub struct SvgRasterPlugin;
 
 impl Plugin for SvgRasterPlugin {
@@ -14,6 +17,8 @@ impl Plugin for SvgRasterPlugin {
     }
 }
 
+/// Adds a [`Sprite`] to all [`Entities`](Entity) with an [`SvgRasterComponent`]
+/// that doesn't already have an associated [`Sprite`].
 fn spawn_svg_sprites(
     mut commands: Commands,
     mut svg_events: MessageReader<AssetEvent<SvgRasterAsset>>,
