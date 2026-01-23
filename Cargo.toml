@@ -10,6 +10,7 @@ rust-version = "1.89"
 
 [dependencies]
 bevy = { version = "0.18", default-features = false, features = [
+    "bevy_log",
     "bevy_sprite_render",
     "std",
 ] }

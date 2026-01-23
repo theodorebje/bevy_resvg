@@ -35,11 +35,13 @@ fn spawn_svg_sprites(
                     }
                 }
             }
-            #[allow(clippy::match_same_arms)]
-            AssetEvent::Removed { id: _ } => {
-                // TODO: Handle Asset Removal
+            AssetEvent::Added { id } => {
+                debug!("added SVG asset '{id}'");
             }
-            _ => {}
+            other => {
+                // TODO: Handle more events
+                warn!("Unimplemented Event for SVG raster assets: '{other:#?}'");
+            }
         }
     }
 }
