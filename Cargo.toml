@@ -1,6 +1,7 @@
 [package]
 authors = ["Theodore Bjernhed <uik1475@edu.kunskapsskolan.se>"]
 categories = ["game-development", "graphics", "multimedia::images", "rendering"]
+description = "A simple library for rendering SVGs in Bevy using the amazing Resvg library."
 edition = "2024"
 keywords = ["bevy", "gamedev", "graphics", "render", "svg"]
 license = "MIT OR Apache-2.0"
@@ -8,7 +9,6 @@ name = "bevy_resvg"
 readme = "README.md"
 repository = "https://github.com/theodorebje/bevy_resvg"
 rust-version = "1.89"
-description = "A simple library for rendering SVGs in Bevy using the amazing Resvg library."
 version = "1.0.0"
 
 [dependencies]
