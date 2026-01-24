@@ -6,6 +6,7 @@ edition = "2024"
 keywords = ["bevy", "gamedev", "graphics", "render", "svg"]
 license = "MIT OR Apache-2.0"
 name = "bevy_resvg"
+exclude = ["sumi.toml"]
 readme = "README.md"
 repository = "https://github.com/theodorebje/bevy_resvg"
 rust-version = "1.89"
