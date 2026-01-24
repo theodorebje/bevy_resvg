@@ -4,7 +4,7 @@ use bevy_resvg::prelude::*;
 
 fn main() {
     App::new()
-        .add_plugins((DefaultPlugins, SvgPlugin, PanCamPlugin::default()))
+        .add_plugins((DefaultPlugins, SvgPlugin, PanCamPlugin))
         .add_systems(Startup, (setup, setup_camera))
         .run();
 }
