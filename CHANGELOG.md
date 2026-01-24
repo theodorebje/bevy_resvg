@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.0.1] - 2026-01-24
+
+### Bugfixes
+
+#### 1. Make `zoom.rs` example compile
+
+### Documentation
+
+#### 1. Add badges
+
+#### 2. Clarify how SLoC is counted
+
+#### 3. Add documentation for each SvgError variant
+
+#### 4. Update SLoC count
+
+### Styling
+
+#### 1. Make clippy like my `README.md` file
+
+#### 2. Remove superfluous `default` call in zoom
+
+### Miscellaneous Tasks
+
+#### 1. Restrict visibility of internal method
+
+#### 2. Add git-cliff
+
+#### 3. Exclude `cliff.toml` file
+
+#### 4. Configure git-cliff
+
+#### 5. Exclude `release.toml` file
+
+#### 6. Don't put chore(release) in `CHANGELOG.md`
+
 ## [1.0.0] - 2026-01-24
 
 ### Features
