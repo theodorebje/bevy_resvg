@@ -170,7 +170,7 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 [MIT](./LICENCE-MIT) OR [Apache-2.0](./LICENCE-APACHE), at your option.
 
-[^1]: Calculated using [scc](https://github.com/boyter/scc).
+[^1]: Calculated using [scc](https://github.com/boyter/scc), only counting Rust code.
 [^2]: Based on the not-yet-merged
 [0.18 PR](https://github.com/Weasy666/bevy_svg/pull/59) by
 [cilki](https://github.com/cilki).
