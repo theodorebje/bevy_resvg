@@ -97,10 +97,7 @@ If you're too lazy to click the link, here's the contents of `simple.rs`:
 
 ```rust
 use bevy::prelude::*;
-use bevy_resvg::{
-    plugin::SvgPlugin,
-    raster::{asset::SvgRasterAsset, component::SvgRasterComponent},
-};
+use bevy_resvg::prelude::*;
 
 fn main() {
     App::new()

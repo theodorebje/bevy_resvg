@@ -1,8 +1,5 @@
 use bevy::prelude::*;
-use bevy_resvg::{
-    plugin::SvgPlugin,
-    raster::{asset::SvgRasterAsset, component::SvgRasterComponent},
-};
+use bevy_resvg::prelude::*;
 
 fn main() {
     App::new()
