@@ -2,7 +2,7 @@
 /// [`SVG`](https://en.wikipedia.org/wiki/SVG) files.
 pub mod asset;
 /// The [`Component`](bevy::ecs::component::Component) that one needs to wrap
-/// [`SvgRasterAsset`](crate::raster::asset::SvgRasterAsset)s in before spawning
+/// [`SvgFile`](crate::raster::asset::SvgFile)s in before spawning
 /// them.
 pub mod component;
 /// The [`Plugin`](bevy::app::Plugin) for initialising the

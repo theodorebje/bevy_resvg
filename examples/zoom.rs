@@ -22,6 +22,6 @@ fn setup_camera(mut commands: Commands) {
 }
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgRasterAsset> = asset_server.load("transparent.svg");
-    commands.spawn(SvgRasterComponent(svg));
+    let svg: Handle<SvgFile> = asset_server.load("transparent.svg");
+    commands.spawn(Svg(svg));
 }

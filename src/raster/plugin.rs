@@ -1,6 +1,6 @@
 use crate::raster::{
-    asset::{SvgRasterAsset, loader::SvgRasterAssetLoader},
-    component::SvgRasterComponent,
+    asset::{SvgFile, loader::SvgFileLoader},
+    component::Svg,
 };
 use bevy::prelude::*;
 
@@ -11,20 +11,20 @@ pub struct SvgRasterPlugin;
 
 impl Plugin for SvgRasterPlugin {
     fn build(&self, app: &mut App) {
-        app.init_asset::<SvgRasterAsset>()
-            .init_asset_loader::<SvgRasterAssetLoader>()
+        app.init_asset::<SvgFile>()
+            .init_asset_loader::<SvgFileLoader>()
             .add_systems(Update, spawn_svg_sprites);
     }
 }
 
-/// Adds a [`Sprite`] to all [`Entities`](Entity) with an [`SvgRasterComponent`]
+/// Adds a [`Sprite`] to all [`Entities`](Entity) with an [`Svg`]
 /// that doesn't already have an associated [`Sprite`].
 fn spawn_svg_sprites(
     mut commands: Commands,
-    mut svg_events: MessageReader<AssetEvent<SvgRasterAsset>>,
-    svg_assets: Res<Assets<SvgRasterAsset>>,
+    mut svg_events: MessageReader<AssetEvent<SvgFile>>,
+    svg_assets: Res<Assets<SvgFile>>,
     mut images: ResMut<Assets<Image>>,
-    query: Query<(Entity, &SvgRasterComponent), Without<Sprite>>,
+    query: Query<(Entity, &Svg), Without<Sprite>>,
 ) {
     for event in svg_events.read() {
         match event {

@@ -1,24 +1,22 @@
-use crate::{
-    error::SvgError, raster::asset::SvgRasterAsset, vector::asset::loader::SvgVectorAssetLoader,
-};
+use crate::{error::SvgError, raster::asset::SvgFile, vector::asset::loader::SvgVectorAssetLoader};
 use bevy::{
     asset::{AssetLoader, LoadContext, RenderAssetUsages, io::Reader},
     prelude::*,
     tasks::ConditionalSendFuture,
 };
 
-/// The [`AssetLoader`] for [`SvgRasterAsset`]s.
+/// The [`AssetLoader`] for [`SvgFile`]s.
 ///
 /// Loads an [`SVG`](https://en.wikipedia.org/wiki/SVG) file using an
 /// [`SvgVectorAssetLoader`] into an
 /// [`SvgVectorAsset`](crate::vector::asset::SvgVectorAsset), and then
-/// rasterises it into a [`SvgRasterAsset`] containing an [`Image`] using
+/// rasterises it into a [`SvgFile`] containing an [`Image`] using
 /// [`resvg`]'s [`render`](resvg::render) function.
 #[derive(Default, TypePath)]
-pub struct SvgRasterAssetLoader;
+pub struct SvgFileLoader;
 
-impl AssetLoader for SvgRasterAssetLoader {
-    type Asset = SvgRasterAsset;
+impl AssetLoader for SvgFileLoader {
+    type Asset = SvgFile;
     type Settings = ();
     type Error = SvgError;
 
@@ -35,7 +33,7 @@ impl AssetLoader for SvgRasterAssetLoader {
 
             let image = vector_asset.render_to_image(RenderAssetUsages::default())?;
 
-            Ok(SvgRasterAsset(image))
+            Ok(SvgFile(image))
         })
     }
 }
