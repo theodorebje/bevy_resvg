@@ -12,8 +12,8 @@ However, I quickly noticed that the bevy_svg had so much technical debt
 clearly worked for many, many people) due to its 5 years of existence that it
 was just easier to start a new library from scratch.
 
-Funnily enough, I'm actually publishing this crate onto <crates.io> on
-bevy_svg's 5-year anniversary
+Funnily enough, I'm actually publishing this crate onto
+[crates.io](https://crates.io/) on bevy_svg's 5-year anniversary
 ([January 24th](https://github.com/Weasy666/bevy_svg/commit/b4d9041))!
 
 **Bevy Resvg** takes a completely different approach to rendering SVGs compared
@@ -47,7 +47,7 @@ approach:
 ### When to use Bevy Resvg over bevy_svg
 
 Although I am very proud of this small little crate (it's my first ever library
-to be published on <crates.io>!), I do realise that there are situations in
+to be published on [crates.io](https://crates.io/)!, I do realise that there are situations in
 which bevy_svg simply makes more sense.
 
 For starters, Bevy Resvg is a very young and immature project. If
@@ -130,7 +130,8 @@ actions:
 1. Run `cargo remove bevy_svg` and `cargo add bevy_resvg`.
 2. If you were just using `bevy_svg::prelude` in your code, simply replace it
 with `bevy_resvg::prelude`.
-3. Replace all occurences of `Svg` with `SvgFile` (make sure you're doing whole-word replacing. You don't want an `SvgFilePlugin`!).
+3. Replace all occurences of `Svg` with `SvgFile` (make sure you're doing
+whole-word replacing. You don't want an `SvgFilePlugin`!).
 4. Replace all occurences of `Svg2d` with `Svg`.
 
 ## Todos
