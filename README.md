@@ -8,30 +8,30 @@ A simple library for rendering SVGs in Bevy using the amazing
 [![Bevy Version](https://img.shields.io/badge/Bevy-v0.18-9B22FF?style=for-the-badge&logo=bevy)](https://bevy.org/news/bevy-0-18/)
 [![Dependency Status](https://img.shields.io/deps-rs/bevy_resvg/latest?style=for-the-badge)](https://deps.rs/repo/github/theodorebje/bevy_resvg)
 
-## Why not [bevy_svg](https://github.com/Weasy666/bevy_svg)?
+## Why not [`bevy_svg`](https://github.com/Weasy666/bevy_svg)?
 
-I originally tried forking bevy_svg to add colour tinting support to the SVGs,
-as proposed by [bevy_svg/#54](https://github.com/Weasy666/bevy_svg/issues/54).
-However, I quickly noticed that the bevy_svg had so much technical debt
+I originally tried forking `bevy_svg` to add colour tinting support to the SVGs,
+as proposed by [`bevy_svg/#54`](https://github.com/Weasy666/bevy_svg/issues/54).
+However, I quickly noticed that the `bevy_svg` had so much technical debt
 (no offense to [Weasy666](https://github.com/Weasy666/), your library has
 clearly worked for many, many people) due to its 5 years of existence that it
 was just easier to start a new library from scratch.
 
 Funnily enough, I'm actually publishing this crate onto
-[crates.io](https://crates.io/) on bevy_svg's 5-year anniversary
+[crates.io](https://crates.io/) on `bevy_svg`'s 5-year anniversary
 ([January 24th](https://github.com/Weasy666/bevy_svg/commit/b4d9041))!
 
 **Bevy Resvg** takes a completely different approach to rendering SVGs compared
-to bevy_svg. Instead of tesselating the SVG into a mesh, it first renders the
+to `bevy_svg`. Instead of tesselating the SVG into a mesh, it first renders the
 SVG as a raster image using the [Resvg](https://github.com/linebender/resvg)
-library. This has both advantages and (unfortunately) drawbacks over bevy_svg's
+library. This has both advantages and (unfortunately) drawbacks over `bevy_svg`'s
 approach:
 
-### Comparison between Bevy Resvg and bevy_svg
+### Comparison between Bevy Resvg and `bevy_svg`
 
-|          Feature          |    |           Bevy Resvg           |    |      bevy_svg       |
+|          Feature          |    |           Bevy Resvg           |    |     `bevy_svg`      |
 | ------------------------- | -- | ------------------------------ | -- | ------------------- |
-| SLoC                      | 🔽 |                        199[^1] | 🔼 |       1912[^1][^2]  |
+| Source Lines of Code      | 🔽 |                        199[^1] | 🔼 |       1912[^1][^2]  |
 | Code Complexity           | 😀 |                         11[^1] | 😵 |        145[^1][^2]  |
 | Changing runtime color    | ✅ | Supported                      | ❌ | Unsupported         |
 | Gradients                 | ✅ | Supported                      | ❌ | Unsupported         |
@@ -49,28 +49,28 @@ approach:
 
 …to be expanded…
 
-### When to use Bevy Resvg over bevy_svg
+### When to use Bevy Resvg over `bevy_svg`
 
 Although I am very proud of this small little crate (it's my first ever library
 to be published on [crates.io](https://crates.io/)!, I do realise that there are situations in
-which bevy_svg simply makes more sense.
+which `bevy_svg` simply makes more sense.
 
 For starters, Bevy Resvg is a very young and immature project. If
 you are looking for something more mature and battle-tested, you should probably
-use bevy_svg.
+use `bevy_svg`.
 
 Another feature missing from Bevy Resvg is 3D rendering, which has first-class
-support in bevy_svg. Unfortunately, you can't easily render to 3D objects with
+support in `bevy_svg`. Unfortunately, you can't easily render to 3D objects with
 Bevy Resvg, yet. Don't worry, it's on the [Todo-list](#todos)! In the meantime,
-check out bevy_svg if you need to render to a 3D object.
+check out `bevy_svg` if you need to render to a 3D object.
 
 Furthermore, if your game is dependent on zooming into the SVGs,
-bevy_svg might fit your needs better (particularly until [custom render size
+`bevy_svg` might fit your needs better (particularly until [custom render size
 target support](#custom-render-size) is added). Bevy Resvg only performs
 rasterisation once, mimicking the behaviour of e.g. the
 [Godot Engine](https://forum.godotengine.org/t/how-to-make-svg-not-pixelated/92365).
 This has the unfortunate side-effect of causing blurry images when zooming in.
-bevy_svg, however, tesselates the SVGs into a crisp Mesh2d, which results in
+`bevy_svg`, however, tesselates the SVGs into a crisp Mesh2d, which results in
 sharper rendering when zoomed in.
 
 However, if you are in need of rendering semi-transparent SVGs, then Bevy Resvg
@@ -79,16 +79,16 @@ runtime colour of your loaded SVGs. In that case, Bevy Resvg makes it super
 simple! Just modify the outputted
 [Sprite](https://docs.rs/bevy/latest/bevy/sprite/struct.Sprite.html)'s `color`
 field and you've got yourself a tinted SVG! That's not possible (again, to my
-knowledge) in bevy_svg. What about gradients? No problem! Resvg handles
+knowledge) in `bevy_svg`. What about gradients? No problem! Resvg handles
 gradients naturally too.
 
 I'm not sure why (and, like many other things in this project, I haven't
-bothered to test why), but positioning and especially sizing SVGs with bevy_svg
+bothered to test why), but positioning and especially sizing SVGs with `bevy_svg`
 as children of sprites felt clunky and required hard-coded values back when I
-used bevy_svg. I have yet to encounter that issue with Bevy Resvg.
+used `bevy_svg`. I have yet to encounter that issue with Bevy Resvg.
 
 Also, although I have no data to back this up, I would assume that Bevy Resvg
-might be a tiny bit faster than bevy_svg. Meshes *feel* more expensive than
+might be a tiny bit faster than `bevy_svg`. Meshes *feel* more expensive than
 simple textures to me, however I am no expert in this area.
 
 ## Usage
@@ -100,7 +100,7 @@ Currently, the only examples are:
 
 - [`simple.rs`](./examples/simple.rs): shows the most basic usage of Bevy Resvg
 - [`zoom.rs`](./examples/zoom.rs): shows what happens when you zoom too far into
-an SVG.
+  an SVG.
 
 More examples are planned!
 
@@ -124,9 +124,9 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
 }
 ```
 
-### Migration guide from bevy_svg
+### Migration guide from `bevy_svg`
 
-If you wish to migrate from bevy_svg to Bevy Resvg, you must do the following
+If you wish to migrate from `bevy_svg` to Bevy Resvg, you must do the following
 actions:
 
 > [!IMPORTANT]
@@ -134,9 +134,9 @@ actions:
 
 1. Run `cargo remove bevy_svg` and `cargo add bevy_resvg`.
 2. If you were just using `bevy_svg::prelude` in your code, simply replace it
-with `bevy_resvg::prelude`.
+   with `bevy_resvg::prelude`.
 3. Replace all occurences of `Svg` with `SvgFile` (make sure you're doing
-whole-word replacing. You don't want an `SvgFilePlugin`!).
+   whole-word replacing. You don't want an `SvgFilePlugin`!).
 4. Replace all occurences of `Svg2d` with `Svg`.
 
 ## Todos
@@ -148,14 +148,14 @@ whole-word replacing. You don't want an `SvgFilePlugin`!).
 - [ ] Expand [comparison table](#comparison-between-bevy-resvg-and-bevy_svg)
   - [ ] Particularly, add performance comparisons
 - [ ] Handle more
-[`AssetEvent`](https://docs.rs/bevy/latest/bevy/asset/enum.AssetEvent.html)s
+  [`AssetEvent`](https://docs.rs/bevy/latest/bevy/asset/enum.AssetEvent.html)s
   - [x] `Added`
   - [x] `Modified`
   - [ ] `Removed`
   - [ ] `Unused`
   - [x] `LoadedWithDependencies`
 - [ ] [`usvg::Options`](https://docs.rs/usvg/latest/usvg/struct.Options.html)
-support
+  support
   - [ ] CSS support
 
 ## Minimum supported Rust version
