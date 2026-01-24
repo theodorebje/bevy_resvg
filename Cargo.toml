@@ -25,6 +25,7 @@ thiserror = ">=1.0.0, <3.0.0"
 bevy = { version = "0.18", default-features = false, features = [
     "default_platform",
 ] }
+bevy_pancam = "0.20.0"
 
 [lints.clippy]
 needless_pass_by_value = { priority = 1, level = "allow" } # Bevy freaks out over references
