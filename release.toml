@@ -1,3 +1,4 @@
+pre-release-commit-message = "build(release): release v{{version}}"
 pre-release-hook = [
     "git",
     "cliff",
@@ -6,3 +7,11 @@ pre-release-hook = [
     "--tag",
     "{{version}}",
 ]
+pre-release-replacements = [
+    { file = "Cargo.toml", search = "^version = .*$", replace = "version = \"{{version}}\"" },
+]
+sign-commit = true
+sign-tag = true
+tag = true
+tag-message = "build(release): release v{{version}}"
+tag-name = "{{prefix}}v{{version}}"
