@@ -31,7 +31,7 @@ approach:
 
 |          Feature          |    |           Bevy Resvg           |    |     `bevy_svg`      |
 | ------------------------- | -- | ------------------------------ | -- | ------------------- |
-| Source Lines of Code      | 🔽 |                        199[^1] | 🔼 |       1912[^1][^2]  |
+| Source Lines of Code      | 🔽 |                        233[^1] | 🔼 |       1912[^1][^2]  |
 | Code Complexity           | 😀 |                         11[^1] | 😵 |        145[^1][^2]  |
 | Changing runtime color    | ✅ | Supported                      | ❌ | Unsupported         |
 | Gradients                 | ✅ | Supported                      | ❌ | Unsupported         |
