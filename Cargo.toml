@@ -10,7 +10,7 @@ name = "bevy_resvg"
 readme = "README.md"
 repository = "https://github.com/theodorebje/bevy_resvg"
 rust-version = "1.89"
-version = "1.0.0"
+version = "1.0.1"
 
 [dependencies]
 bevy = { version = "0.18", default-features = false, features = [
