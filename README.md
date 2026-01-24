@@ -35,6 +35,7 @@ approach:
 | Static SVG Spec Support   | ✅ | Fully Supported                | ⚠️ | Partial Support     |
 | Rendered quality (normal) | ✅ | Crisp                          | ✅ | Crisp               |
 | Rendered quality (zoomed) | ❌ | Blurry and Pixelated           | ✅ | Crisp               |
+| 3D-Rendering              | ❌ | Unsupported                    | ✅ | Supported           |
 | Hot-reloading of SVGs     | ❌ | Unsupported                    | ❌ | Unsupported         |
 | Animated SVGs             | ❌ | Unsupported                    | ❌ | Unsupported         |
 | Approach                  | 🖼️ | Rasterisation                  | 🔺 | Tesselation         |
@@ -52,6 +53,11 @@ which bevy_svg simply makes more sense.
 For starters, Bevy Resvg is a very young and immature project. If
 you are looking for something more mature and battle-tested, you should probably
 use bevy_svg.
+
+Another feature missing from Bevy Resvg is 3D rendering, which has first-class
+support in bevy_svg. Unfortunately, you can't easily render to 3D objects with
+Bevy Resvg, yet. Don't worry, it's on the [Todo-list](#todos)! In the meantime,
+check out bevy_svg if you need to render to a 3D object.
 
 Furthermore, if your game is dependent on zooming into the SVGs,
 bevy_svg might fit your needs better (particularly until [custom render size
@@ -113,8 +119,23 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
 }
 ```
 
+### Migration guide from bevy_svg
+
+If you wish to migrate from bevy_svg to Bevy Resvg, you must do the following
+actions:
+
+> [!IMPORTANT]
+> 3D rendering is not yet supported in Bevy Resvg.
+
+1. Run `cargo remove bevy_svg` and `cargo add bevy_resvg`.
+2. If you were just using `bevy_svg::prelude` in your code, simply replace it
+with `bevy_resvg::prelude`.
+3. Replace all occurences of `Svg` with `SvgFile` (make sure you're doing whole-word replacing. You don't want an `SvgFilePlugin`!).
+4. Replace all occurences of `Svg2d` with `Svg`.
+
 ## Todos
 
+- [ ] 3D-Rendering support
 - [ ] Add more examples
 - [ ] Add tests (there are currently none…)
 - [ ] Custom rendering size targets (not dependent on `viewBox` value) <a id="custom-render-size"></a>
