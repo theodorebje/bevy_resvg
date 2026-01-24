@@ -2,7 +2,7 @@
 name = "bevy_resvg"
 authors = ["Theodore Bjernhed <uik1475@edu.kunskapsskolan.se>"]
 edition = "2024"
-version = "0.0.0"
+version = "1.0.0"
 readme = "README.md"
 repository = "https://github.com/theodorebje/bevy_resvg"
 license = "MIT OR Apache-2.0"
