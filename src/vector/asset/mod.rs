@@ -32,7 +32,7 @@ impl SvgVectorAsset {
     ///
     /// The `viewBox` *must not* be 0 on any axis. If this invariant is broken,
     /// then this function will return an [`SvgError::Empty`].
-    pub fn render(&self) -> Result<Pixmap> {
+    fn render(&self) -> Result<Pixmap> {
         let (width, height) = self.0.size().to_int_size().dimensions();
         let mut buf = Pixmap::new(width, height).ok_or(SvgError::Empty)?;
 
