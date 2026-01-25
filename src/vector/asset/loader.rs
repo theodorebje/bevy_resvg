@@ -32,4 +32,8 @@ impl AssetLoader for SvgVectorAssetLoader {
             Ok(SvgVectorAsset(tree))
         })
     }
+
+    fn extensions(&self) -> &[&str] {
+        &["svg", "svgz"]
+    }
 }

@@ -36,4 +36,8 @@ impl AssetLoader for SvgFileLoader {
             Ok(SvgFile(image))
         })
     }
+
+    fn extensions(&self) -> &[&str] {
+        &["svg", "svgz"]
+    }
 }
