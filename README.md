@@ -147,12 +147,12 @@ actions:
 - [ ] Custom rendering size targets (not dependent on `viewBox` value) <a id="custom-render-size"></a>
 - [ ] Expand [comparison table](#comparison-between-bevy-resvg-and-bevy_svg)
   - [ ] Particularly, add performance comparisons
-- [ ] Handle more
+- [x] Handle more
   [`AssetEvent`](https://docs.rs/bevy/latest/bevy/asset/enum.AssetEvent.html)s
   - [x] `Added`
   - [x] `Modified`
-  - [ ] `Removed`
-  - [ ] `Unused`
+  - [x] `Removed`
+  - [x] `Unused`
   - [x] `LoadedWithDependencies`
 - [ ] [`usvg::Options`](https://docs.rs/usvg/latest/usvg/struct.Options.html)
   support
