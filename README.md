@@ -24,30 +24,66 @@ Funnily enough, I'm actually publishing this crate onto
 **Bevy Resvg** takes a completely different approach to rendering SVGs compared
 to `bevy_svg`. Instead of tesselating the SVG into a mesh, it first renders the
 SVG as a raster image using the [Resvg](https://github.com/linebender/resvg)
-library. This has both advantages and (unfortunately) drawbacks over `bevy_svg`'s
-approach:
+library.
 
-### Comparison between Bevy Resvg and `bevy_svg`
+## Why not [Bevy Vello](https://github.com/linebender/bevy_vello) then?
 
-|          Feature          |    |           Bevy Resvg           |    |     `bevy_svg`      |
-| ------------------------- | -- | ------------------------------ | -- | ------------------- |
-| Source Lines of Code      | 🔽 |                        233[^1] | 🔼 |       1904[^1][^2]  |
-| Code Complexity           | 😀 |                         11[^1] | 😵 |        145[^1][^2]  |
-| Hot-reloading of SVGs     | ✅ | Supported                      | ✅ | Supported           |
-| Changing runtime color    | ✅ | Supported                      | ❌ | Unsupported         |
-| Gradients                 | ✅ | Supported                      | ❌ | Unsupported         |
-| Semi-transparency         | ✅ | Supported                      | ❌ | Unsupported         |
-| Positioning and sizing    | ✅ | Native (`Sprite`-based)        | ❌ | Janky and imprecise |
-| Static SVG Spec Support   | ✅ | Fully Supported                | ⚠️ | Partial Support     |
-| Rendered quality (normal) | ✅ | Crisp                          | ✅ | Crisp               |
-| Rendered quality (zoomed) | ❌ | Blurry and Pixelated           | ✅ | Crisp               |
-| 3D-Rendering              | ❌ | Unsupported                    | ✅ | Supported           |
-| Animated SVGs             | ❌ | Unsupported                    | ❌ | Unsupported         |
-| Approach                  | 🖼️ | Rasterisation                  | 🔺 | Tesselation         |
-| Output                    | 🏃‍➡️ | Sprite                         | 🕸  | Mesh2d              |
-| Licence                   | 🟰 | MIT OR Apache-2.0              | 🟰 | MIT OR Apache-2.0   |
+I actually only found out about Bevy Vello after publishing this crate. For
+those unaware (like I was earlier!), Bevy Vello is a Bevy plugin that can render
+numerous types of vector graphics, from text to SVGs to even
+[Lotties](https://lottie.github.io/) using the
+[Vello](https://github.com/linebender/vello) crate. Vello focuses on GPU
+compute, making it very quick. Thanks to this performance, it can perform
+Just-in-Time (JIT) rasterisation of the vector graphics, allowing for crisp
+graphics at any resolution.
+
+However, Vello isn't perfect. Most importantly, it doesn't support as much of
+the Static SVG Spec as Resvg does. If you need to load complex SVGs, Bevy Resvg
+is simply going to be the best choice.
+
+Here's a complete comparison between the three:
+
+## Comparison between Bevy Resvg, `bevy_svg`, and Bevy Vello
+
+|          Feature          |    |           Bevy Resvg           |    |     `bevy_svg`      |    |           Bevy Vello            |
+| ------------------------- | -- | ------------------------------ | -- | ------------------- | -- | ------------------------------- |
+| Source Lines of Code      | 🔽 |                        233[^1] | 🔼 |        1904[^1][^2] | ⏫ |                    6361[^1][^3] |
+| Code Complexity           | 😀 |                         11[^1] | 😵‍💫 |         145[^1][^2] | 😵 |                     409[^1][^3] |
+| Hot-reloading of SVGs     | ✅ | Supported                      | ✅ | Supported           | ❌ | Unsupported                     |
+| Changing runtime color    | ✅ | Supported                      | ❌ | Unsupported         | ❌ | Unsupported                     |
+| Gradients                 | ✅ | Supported                      | ❌ | Unsupported         | ⚠️ | Inaccurate                      |
+| Semi-transparency         | ✅ | Supported                      | ❌ | Unsupported         | ✅ | Supported                       |
+| Positioning and sizing    | ✅ | Native (`Sprite`-based)        | ❌ | Janky and imprecise | ✅ | Native (`Image`-based)          |
+| Static SVG Spec Support   | ✅ | Fully Supported                | ⚠️ | Partial Support     | ⚠️ | Partial Support                 |
+| Rendered quality (normal) | ✅ | Crisp                          | ✅ | Crisp               | ✅ | Crisp                           |
+| Rendered quality (zoomed) | ❌ | Blurry and Pixelated           | ✅ | Crisp               | ✅ | Crisp                           |
+| 3D-Rendering              | ❌ | Unsupported                    | ✅ | Supported           | ✅ | Supported                       |
+| Animated SVGs             | ❌ | Unsupported                    | ❌ | Unsupported         | ❌ | Unsupported                     |
+| Approach                  | 🖼️ | Rasterisation (once)           | 🔺 | Tesselation         | ⚙️ | Rasterisation (JIT every frame) |
+| Output                    | 🏃‍➡️ | Sprite                         | 🕸  | Mesh2d              | 🔀 | Mesh2d with image-based texture |
+| Licence                   | 🟰 | MIT OR Apache-2.0              | 🟰 | MIT OR Apache-2.0   | 🟰 | MIT OR Apache-2.0               |
+
+>[!NOTE]
+>In order to be able to hot-reload your SVGs, you must enable the
+>`file_watcher` **BEVY FEATURE** (*not* a feature available in this crate).
+>
+>As a side note, you probably want to enable entire `dev` collection (again,
+>the *Bevy feature*, there is *no* feature called `dev` in this crate). It comes
+>with a handful of goods, including debug logs and
+>[dev tools](https://docs.rs/bevy/latest/bevy/dev_tools/index.html).
 
 …to be expanded…
+
+## Okay, but when should I *actually* use Bevy Resvg over the others?
+
+This is a very complex question to answer. Your best bet is probably going to be
+to just add one to your list of dependencies and try it out; all three projects
+are quite interchangeable with each other.
+
+If you're not up for waiting for 3 separate crates to compile, and you want some
+more concrete examples than the
+[comparison table above](#comparison-between-bevy-resvg-bevy_svg-and-bevy-vello),
+then check out some of the longer explanations below.
 
 ### When to use Bevy Resvg over `bevy_svg`
 
@@ -91,6 +127,12 @@ Also, although I have no data to back this up, I would assume that Bevy Resvg
 might be a tiny bit faster than `bevy_svg`. Meshes *feel* more expensive than
 simple textures to me, however I am no expert in this area.
 
+### When to use bevy Resvg over Bevy Vello
+
+To be written…
+
+<!-- TODO: Write this section -->
+
 ## Usage
 
 See the [examples](./examples/) directory for examples of how to use the Bevy
@@ -129,8 +171,8 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
 If you wish to migrate from `bevy_svg` to Bevy Resvg, you must do the following
 actions:
 
-> [!IMPORTANT]
-> 3D rendering is not yet supported in Bevy Resvg.
+>[!IMPORTANT]
+>3D rendering is not yet supported in Bevy Resvg.
 
 1. Run `cargo remove bevy_svg` and `cargo add bevy_resvg`.
 2. If you were just using `bevy_svg::prelude` in your code, simply replace it
@@ -145,7 +187,7 @@ actions:
 - [ ] Add more examples
 - [ ] Add tests (there are currently none…)
 - [ ] Custom rendering size targets (not dependent on `viewBox` value) <a id="custom-render-size"></a>
-- [ ] Expand [comparison table](#comparison-between-bevy-resvg-and-bevy_svg)
+- [ ] Expand [comparison table](#comparison-between-bevy-resvg-bevy_svg-and-bevy-vello)
   - [ ] Particularly, add performance comparisons
 - [x] Handle more
   [`AssetEvent`](https://docs.rs/bevy/latest/bevy/asset/enum.AssetEvent.html)s
@@ -173,3 +215,6 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 [^1]: Calculated using [scc](https://github.com/boyter/scc), only counting Rust code.
 [^2]: Based on commit
 [`b3a3748` in `Weasy666/bevy_svg`](https://github.com/Weasy666/bevy_svg/commit/b3a3748b09ed1ea65eff634ed10142043b1f856e)
+[^3]: Based on tagged release
+[`v0.13.0` in `linebender/bevy_vello`](https://github.com/linebender/bevy_vello/tree/v0.13.0)
+because later versions of Bevy Vello refuse to compile on my machine.
