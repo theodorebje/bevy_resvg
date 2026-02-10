@@ -41,6 +41,7 @@ types_allowed = [
     "docs",
     "feat",
     "fix",
+    "merge",
     "perf",
     "refactor",
     "style",
