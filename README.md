@@ -31,7 +31,7 @@ approach:
 
 |          Feature          |    |           Bevy Resvg           |    |     `bevy_svg`      |
 | ------------------------- | -- | ------------------------------ | -- | ------------------- |
-| Source Lines of Code      | 🔽 |                        233[^1] | 🔼 |       1912[^1][^2]  |
+| Source Lines of Code      | 🔽 |                        233[^1] | 🔼 |       1904[^1][^2]  |
 | Code Complexity           | 😀 |                         11[^1] | 😵 |        145[^1][^2]  |
 | Changing runtime color    | ✅ | Supported                      | ❌ | Unsupported         |
 | Gradients                 | ✅ | Supported                      | ❌ | Unsupported         |
@@ -171,6 +171,5 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 [MIT](./LICENCE-MIT) OR [Apache-2.0](./LICENCE-APACHE), at your option.
 
 [^1]: Calculated using [scc](https://github.com/boyter/scc), only counting Rust code.
-[^2]: Based on the not-yet-merged
-[0.18 PR](https://github.com/Weasy666/bevy_svg/pull/59) by
-[cilki](https://github.com/cilki).
+[^2]: Based on commit
+[`b3a3748` in `Weasy666/bevy_svg`](https://github.com/Weasy666/bevy_svg/commit/b3a3748b09ed1ea65eff634ed10142043b1f856e)
