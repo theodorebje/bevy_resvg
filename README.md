@@ -127,6 +127,12 @@ Also, although I have no data to back this up, I would assume that Bevy Resvg
 might be a tiny bit faster than `bevy_svg`. Meshes *feel* more expensive than
 simple textures to me, however I am no expert in this area.
 
+During testing, I found that `bevy_svg` couldn't load complex Inkscape-generated
+SVGs, while Bevy Resvg handled them flawlessly just like any other SVG file.
+Although you should not ship Inkscape-generated SVGs in your released game, it
+can be beneficial to not have to export your SVGs as standard SVGs from Inkscape
+each time you want to test a new design.
+
 ### When to use bevy Resvg over Bevy Vello
 
 To be written…
