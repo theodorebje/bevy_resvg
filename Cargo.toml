@@ -19,13 +19,13 @@ bevy = { version = "0.18", default-features = false, features = [
     "std",
 ] }
 resvg = ">=0.42, ^0.47"
-thiserror = ">=1.0.0, <3.0.0"
+thiserror = ">=1.0, <3.0"
 
 [dev-dependencies]
 bevy = { version = "0.18", default-features = false, features = [
     "default_platform",
 ] }
-bevy_pancam = "0.20.0"
+bevy_pancam = "0.20"
 
 [lints.clippy]
 needless_pass_by_value = { priority = 1, level = "allow" } # Bevy freaks out over references
