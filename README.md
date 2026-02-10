@@ -184,6 +184,7 @@ actions:
 ## Todos
 
 - [ ] 3D-Rendering support
+- [ ] JIT support! (because it's cool, I doubt that it is performant lol)
 - [ ] Add more examples
 - [ ] Add tests (there are currently none…)
 - [ ] Custom rendering size targets (not dependent on `viewBox` value) <a id="custom-render-size"></a>
