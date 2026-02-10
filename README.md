@@ -88,8 +88,8 @@ then check out some of the longer explanations below.
 ### When to use Bevy Resvg over `bevy_svg`
 
 Although I am very proud of this small little crate (it's my first ever library
-to be published on [crates.io](https://crates.io/)!, I do realise that there are situations in
-which `bevy_svg` simply makes more sense.
+to be published on [crates.io](https://crates.io/)!, I do realise that there are
+situations in which `bevy_svg` simply makes more sense.
 
 For starters, Bevy Resvg is a very young and immature project. If
 you are looking for something more mature and battle-tested, you should probably
@@ -119,9 +119,9 @@ knowledge) in `bevy_svg`. What about gradients? No problem! Resvg handles
 gradients naturally too.
 
 I'm not sure why (and, like many other things in this project, I haven't
-bothered to test why), but positioning and especially sizing SVGs with `bevy_svg`
-as children of sprites felt clunky and required hard-coded values back when I
-used `bevy_svg`. I have yet to encounter that issue with Bevy Resvg.
+bothered to test why), but positioning and especially sizing SVGs with
+`bevy_svg` as children of sprites felt clunky and required hard-coded values
+back when I used `bevy_svg`. I have yet to encounter that issue with Bevy Resvg.
 
 Also, although I have no data to back this up, I would assume that Bevy Resvg
 might be a tiny bit faster than `bevy_svg`. Meshes *feel* more expensive than
@@ -219,7 +219,8 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 [MIT](./LICENCE-MIT) OR [Apache-2.0](./LICENCE-APACHE), at your option.
 
-[^1]: Calculated using [scc](https://github.com/boyter/scc), only counting Rust code.
+[^1]: Calculated using [scc](https://github.com/boyter/scc), only counting Rust
+code.
 [^2]: Based on commit
 [`b3a3748` in `Weasy666/bevy_svg`](https://github.com/Weasy666/bevy_svg/commit/b3a3748b09ed1ea65eff634ed10142043b1f856e)
 [^3]: Based on tagged release
