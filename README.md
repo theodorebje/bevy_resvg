@@ -41,7 +41,7 @@ approach:
 | Rendered quality (normal) | ✅ | Crisp                          | ✅ | Crisp               |
 | Rendered quality (zoomed) | ❌ | Blurry and Pixelated           | ✅ | Crisp               |
 | 3D-Rendering              | ❌ | Unsupported                    | ✅ | Supported           |
-| Hot-reloading of SVGs     | ❌ | Unsupported                    | ❌ | Unsupported         |
+| Hot-reloading of SVGs     | ❌ | Unsupported                    | ✅ | Supported           |
 | Animated SVGs             | ❌ | Unsupported                    | ❌ | Unsupported         |
 | Approach                  | 🖼️ | Rasterisation                  | 🔺 | Tesselation         |
 | Output                    | 🏃‍➡️ | Sprite                         | 🕸  | Mesh2d              |
