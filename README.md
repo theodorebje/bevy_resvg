@@ -33,6 +33,7 @@ approach:
 | ------------------------- | -- | ------------------------------ | -- | ------------------- |
 | Source Lines of Code      | 🔽 |                        233[^1] | 🔼 |       1904[^1][^2]  |
 | Code Complexity           | 😀 |                         11[^1] | 😵 |        145[^1][^2]  |
+| Hot-reloading of SVGs     | ✅ | Supported                      | ✅ | Supported           |
 | Changing runtime color    | ✅ | Supported                      | ❌ | Unsupported         |
 | Gradients                 | ✅ | Supported                      | ❌ | Unsupported         |
 | Semi-transparency         | ✅ | Supported                      | ❌ | Unsupported         |
@@ -41,7 +42,6 @@ approach:
 | Rendered quality (normal) | ✅ | Crisp                          | ✅ | Crisp               |
 | Rendered quality (zoomed) | ❌ | Blurry and Pixelated           | ✅ | Crisp               |
 | 3D-Rendering              | ❌ | Unsupported                    | ✅ | Supported           |
-| Hot-reloading of SVGs     | ❌ | Unsupported                    | ✅ | Supported           |
 | Animated SVGs             | ❌ | Unsupported                    | ❌ | Unsupported         |
 | Approach                  | 🖼️ | Rasterisation                  | 🔺 | Tesselation         |
 | Output                    | 🏃‍➡️ | Sprite                         | 🕸  | Mesh2d              |
