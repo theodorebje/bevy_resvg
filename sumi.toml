@@ -35,14 +35,14 @@ conventional = true
 # Rule: List of allowed commit types.
 # An empty list allows all types. Example: ["feat", "fix", "docs"].
 types_allowed = [
-    "fix",
-    "feat",
     "build",
     "chore",
     "ci",
     "docs",
-    "style",
-    "refactor",
+    "feat",
+    "fix",
     "perf",
+    "refactor",
+    "style",
     "test",
 ]
