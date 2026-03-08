@@ -1,5 +1,9 @@
 # Bevy Resvg
 
+>[!IMPORTANT]
+>You're in the `resvg-option` branch of Bevy Resvg. See `USAGE.md` for
+>instructions on how to use this branch in your project.
+
 A simple library for rendering SVGs in Bevy using the amazing
 [Resvg](https://github.com/linebender/resvg) library.
 
