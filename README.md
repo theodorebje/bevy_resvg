@@ -114,9 +114,10 @@ This has the unfortunate side-effect of causing blurry images when zooming in.
 sharper rendering when zoomed in.
 
 If you wish to mitigate the blur, you can set a custom target render size via
-`SvgFileLoaderSettings::target_render_size`. This allows you to render a larger
+`SvgFileLoaderSettings.target_render_size`. This allows you to render a larger
 image up front. However, this has the caveat of requiring you to manually
-determine how far a user is likely to zoom in on your SVGs.
+determine how far a user is likely to zoom in on your SVGs. See the
+[`custom_size`](./examples/custom_size.rs) example for a demonstration of this.
 
 However, if you are in need of rendering semi-transparent SVGs, then Bevy Resvg
 is your only option (to my knowledge). Perhaps you even want to change the
