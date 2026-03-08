@@ -51,7 +51,7 @@ Here's a complete comparison between the three:
 | Code Complexity           | 😀 |                                49[^1] | 😵‍💫 |         145[^1][^2] | 😵 |                     409[^1][^3]    |
 | Hot-reloading of SVGs     | ✅ | Supported                             | ✅ | Supported           | ❌ | Unsupported                        |
 | Changing runtime colour   | ✅ | Supported                             | ❌ | Unsupported         | ❌ | Unsupported                        |
-| Custom CSS injection      | ✅ | Supported                             | ❌ | Unsupported         | ❌ | Unsupported                          |
+| Custom CSS injection      | ✅ | Supported                             | ❌ | Unsupported         | ❌ | Unsupported                        |
 | Gradients                 | ✅ | Supported                             | ❌ | Unsupported         | ⚠️ | Inaccurate                         |
 | Semi-transparency         | ✅ | Supported                             | ❌ | Unsupported         | ✅ | Supported                          |
 | Positioning and sizing    | ✅ | Native (`Sprite` & `ImageNode`-based) | ❌ | Janky and imprecise | ✅ | Native (`Image`-based)             |
