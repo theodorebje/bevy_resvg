@@ -51,6 +51,7 @@ Here's a complete comparison between the three:
 | Code Complexity           | 😀 |                                49[^1] | 😵‍💫 |         145[^1][^2] | 😵 |                     409[^1][^3]    |
 | Hot-reloading of SVGs     | ✅ | Supported                             | ✅ | Supported           | ❌ | Unsupported                        |
 | Changing runtime colour   | ✅ | Supported                             | ❌ | Unsupported         | ❌ | Unsupported                        |
+| Custom CSS injection      | ✅ | Supported                             | ❌ | Unsupported         | ❌ | Unsupported                          |
 | Gradients                 | ✅ | Supported                             | ❌ | Unsupported         | ⚠️ | Inaccurate                         |
 | Semi-transparency         | ✅ | Supported                             | ❌ | Unsupported         | ✅ | Supported                          |
 | Positioning and sizing    | ✅ | Native (`Sprite` & `ImageNode`-based) | ❌ | Janky and imprecise | ✅ | Native (`Image`-based)             |
@@ -166,6 +167,8 @@ Currently, the only examples are:
   render an SVG to a custom target size with a non-native aspect ratio
 - [`custom_size`](./examples/custom_size.rs): shows how to render an SVG to a
   custom target size
+- [`custom_style_sheet`](./examples/custom_style_sheet.rs): shows how to
+  customize `usvg::Options` while loading an SVG by setting `style_sheet`
 - [`simple`](./examples/simple.rs): shows the most basic usage of Bevy Resvg
 - [`ui`](./examples/ui.rs): shows how to render `UiSvg`s in UI nodes
 - [`zoom`](./examples/zoom.rs): shows what happens when you zoom too far into
@@ -227,9 +230,9 @@ actions:
   - [x] `Removed`
   - [x] `Unused`
   - [x] `LoadedWithDependencies`
-- [ ] [`usvg::Options`](https://docs.rs/usvg/latest/usvg/struct.Options.html)
+- [x] [`usvg::Options`](https://docs.rs/usvg/latest/usvg/struct.Options.html)
   support
-  - [ ] CSS support
+  - [x] CSS support
 
 ## Minimum supported Rust version
 

@@ -4,7 +4,7 @@ use bevy::{
     prelude::*,
     tasks::ConditionalSendFuture,
 };
-use resvg::usvg::{Options, Tree};
+use resvg::usvg::Tree;
 
 /// The [`AssetLoader`] for [`SvgVectorAsset`]s.
 ///
@@ -21,14 +21,13 @@ impl AssetLoader for SvgVectorAssetLoader {
     fn load(
         &self,
         reader: &mut dyn Reader,
-        _settings: &Self::Settings,
+        settings: &Self::Settings,
         _load_context: &mut LoadContext,
     ) -> impl ConditionalSendFuture<Output = Result<Self::Asset, Self::Error>> {
         Box::pin(async move {
             let mut buf = Vec::new();
             reader.read_to_end(&mut buf).await?;
-            let options = Options::default();
-            let tree = Tree::from_data(&buf, &options)?;
+            let tree = Tree::from_data(&buf, &settings.options)?;
             Ok(SvgVectorAsset(tree))
         })
     }
