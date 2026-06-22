@@ -9,11 +9,11 @@ license = "MIT OR Apache-2.0"
 name = "bevy_resvg"
 readme = "README.md"
 repository = "https://github.com/theodorebje/bevy_resvg"
-rust-version = "1.89"
-version = "2.3.3"
+rust-version = "1.95"
+version = "2.4.0"
 
 [dependencies]
-bevy = { version = "0.18", default-features = false, features = [
+bevy = { version = "0.19", default-features = false, features = [
     "bevy_log",
     "bevy_sprite_render",
     "bevy_ui",
@@ -25,8 +25,8 @@ serde = { version = "1.0", features = ["derive"] }
 thiserror = ">=1.0, <3.0"
 
 [dev-dependencies]
-bevy = { version = "0.18", default-features = true, features = ["debug"] }
-bevy_pancam = "0.20"
+bevy = { version = "0.19", default-features = true, features = ["debug"] }
+bevy_pancam = "0.21"
 
 [lints.clippy]
 needless_pass_by_value = { priority = 1, level = "allow" } # Bevy freaks out over references
