@@ -13,7 +13,7 @@ A simple library for rendering SVGs in Bevy using the amazing
 I originally tried forking `bevy_svg` to add colour tinting support to the SVGs,
 as proposed by [`bevy_svg/#54`](https://github.com/Weasy666/bevy_svg/issues/54).
 However, I quickly noticed that the `bevy_svg` had so much technical debt
-(no offense to [Weasy666](https://github.com/Weasy666/), your library has
+(no offence to [Weasy666](https://github.com/Weasy666/), your library has
 clearly worked for many, many people) due to its 5 years of existence that it
 was just easier to start a new library from scratch.
 
@@ -84,7 +84,7 @@ are quite interchangeable with each other.
 If you're not up for waiting for 3 separate crates to compile, and you want some
 more concrete examples than the
 [comparison table above](#comparison-between-bevy-resvg-bevy_svg-and-bevy-vello),
-then check out some of the longer explanations below.
+then check out the longer explanations below.
 
 ### When to use Bevy Resvg over `bevy_svg`
 
@@ -98,14 +98,14 @@ use `bevy_svg`.
 
 Another feature missing from Bevy Resvg is 3D rendering, which has first-class
 support in `bevy_svg`. Unfortunately, you can't easily render to 3D objects with
-Bevy Resvg, yet. Don't worry, it's on the [Todo-list](#todos)! In the meantime,
+Bevy Resvg, yet. Don't worry, it's on the [To-do list](#todos)! In the meantime,
 check out `bevy_svg` if you need to render to a 3D object.
 
 Furthermore, if your game is dependent on zooming into the SVGs,
 `bevy_svg` might fit your needs better. Bevy Resvg only performs
 rasterisation once, mimicking the behaviour of e.g. the
 [Godot Engine](https://forum.godotengine.org/t/how-to-make-svg-not-pixelated/92365).
-This has the unfortunate side-effect of causing blurry images when zooming in.
+This has the unfortunate side effect of causing blurry images when zooming in.
 `bevy_svg`, however, tessellates the SVGs into a crisp `Mesh2d`, which results in
 sharper rendering when zoomed in.
 
@@ -147,7 +147,7 @@ To be written…
 
 ## Usage
 
-See the [examples](./examples/) directory for examples of how to use the Bevy
+See the [`examples`](./examples/) directory for examples of how to use the Bevy
 Resvg.
 
 Currently, the only examples are:
@@ -158,7 +158,7 @@ Currently, the only examples are:
   that continuously tweens through all hues
 - [`color_ui_change`](./examples/color_ui_change.rs): shows how to update the
   colour tint of a `UiSvg` when an event (spacebar pressed) occurs
-- [`color_ui_hue_tween`](./examples/color_ui_hue_tween.rs): showcase of an
+- [`color_ui_hue_tween`](./examples/color_ui_hue_tween.rs): showcase of a
   `UiSvg` that continuously tweens through all hues
 - [`color_ui`](./examples/color_ui.rs): shows how to apply a static colour
   tint to a `UiSvg`
@@ -180,7 +180,7 @@ Currently, the only examples are:
 
 More examples are planned!
 
-If you're too lazy to click the link, here's the contents of `simple.rs`:
+If you're too lazy to click the link, here are the contents of `simple.rs`:
 
 ```rust
 use bevy::prelude::*;
@@ -250,7 +250,7 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 [MIT](./LICENCE-MIT) OR [Apache-2.0](./LICENCE-APACHE), at your option.
 
-[^1]: Calculated using [scc](https://github.com/boyter/scc), only counting Rust
+[^1]: Calculated using [`scc`](https://github.com/boyter/scc), only counting Rust
 code.
 [^2]: Based on commit
 [`b3a3748` in `Weasy666/bevy_svg`](https://github.com/Weasy666/bevy_svg/commit/b3a3748b09ed1ea65eff634ed10142043b1f856e)
