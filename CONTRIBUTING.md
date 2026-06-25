@@ -14,10 +14,5 @@ project, I'll happily merge it. Please make sure there are no Clippy warnings
 and that you have run `cargo fmt` before submitting, though. All help is
 appreciated.
 
-If you have [git-sumi](https://sumi.rs/) installed, feel free to use the
-provided [sumi.toml](/sumi.toml) file. Otherwise, don't bother. I'll reword your
-message to fit the
-[Conventional Commits spec](https://www.conventionalcommits.org) for you 😁
-
 <!-- markdownlint-disable-next-line no-trailing-punctuation -->
 ## Thanks for contributing!
