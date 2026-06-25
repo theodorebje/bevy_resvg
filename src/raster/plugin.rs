@@ -80,7 +80,6 @@ fn sync_existing_image_from_svg(
     if let Some(svg_file) = svg_assets.get(id) {
         // `get_mut` yields `&mut Image` on 0.18 but a `Mut<Image>` on 0.19, which
         // needs a `mut` binding to assign through; that `mut` is unused on 0.18.
-        #[allow(unused_mut)]
         if let Some(mut image) = images.get_mut(image_handle.id()) {
             *image = svg_file.0.clone();
             debug!("Updated `Image` data for modified `{id}`");
