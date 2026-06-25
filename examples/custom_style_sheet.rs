@@ -9,8 +9,7 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server.load_with_settings(
-        "transparent.svg",
+    let svg: Handle<SvgFile> = asset_server.load_builder().with_settings(
         |settings: &mut SvgFileLoaderSettings| {
             settings.options.style_sheet = Some(String::from(
                 "circle {
@@ -19,7 +18,7 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
                 }",
             ));
         },
-    );
+    ).load("transparent.svg");
     commands.spawn(Camera2d);
     commands.spawn(Svg(svg));
 }
