@@ -26,10 +26,11 @@ fn setup_camera(mut commands: Commands) {
 }
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server.load_builder().with_settings(
-        |settings: &mut SvgFileLoaderSettings| {
+    let svg: Handle<SvgFile> = asset_server
+        .load_builder()
+        .with_settings(|settings: &mut SvgFileLoaderSettings| {
             settings.options.shape_rendering = bevy_resvg::resvg::usvg::ShapeRendering::CrispEdges; // This tells `resvg` to not do any anti-aliasing.
-        },
-    ).load("transparent.svg");
+        })
+        .load("transparent.svg");
     commands.spawn(Svg(svg));
 }
