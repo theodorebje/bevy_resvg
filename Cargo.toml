@@ -1,5 +1,5 @@
 [package]
-authors = ["Theodore Bjernhed <uik1475@edu.kunskapsskolan.se>"]
+authors = ["Theodore Bjernhed <fosseder@danwin1210.de>"]
 categories = ["game-development", "graphics", "multimedia::images", "rendering"]
 description = "A simple library for rendering SVGs in Bevy using the amazing Resvg library."
 edition = "2024"
