@@ -4,7 +4,7 @@ Thank you so much for contributing! All contributions are welcome here. This
 project isn't very mature yet, so I am sure there are countless bugs and missing
 features. If you have a bug or feature request, please open an issue on the
 [issue tracker](https://github.com/theodorebje/bevy_resvg/issues)! There is no
-issue template, so just include whatever you believe is appropiate.
+issue template, so just include whatever you believe is appropriate.
 
 ## Submitting code
 
