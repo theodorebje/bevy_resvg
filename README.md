@@ -174,6 +174,8 @@ Currently, the only examples are:
 - [`custom_style_sheet`](./examples/custom_style_sheet.rs): shows how to
   customise `usvg::Options` while loading an SVG by setting `style_sheet`
 - [`simple`](./examples/simple.rs): shows the most basic usage of Bevy Resvg
+- [`simple_scene`](./examples/simple_scene.rs): shows basic `bsn!` and
+  `World::spawn_scene` integration in Bevy Resvg
 - [`ui`](./examples/ui.rs): shows how to render `UiSvg`s in UI nodes
 - [`zoom`](./examples/zoom.rs): shows what happens when you zoom too far into
   an SVG
@@ -197,6 +199,32 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let svg: Handle<SvgFile> = asset_server.load("transparent.svg");
     commands.spawn(Camera2d);
     commands.spawn(Svg(svg));
+}
+```
+
+In real code, you most likely want to use scenes instead. Here are the contents
+of `simple_scene.rs`:
+
+```rust
+use bevy::prelude::*;
+use bevy_resvg::prelude::*;
+
+fn main() {
+    App::new()
+        .add_plugins((DefaultPlugins, SvgPlugin))
+        .add_systems(Startup, setup)
+        .run();
+}
+
+fn setup(mut commands: Commands) {
+    commands.spawn(Camera2d);
+    commands.spawn_scene(svg_scene());
+}
+
+fn svg_scene() -> impl Scene {
+    bsn! {
+        Svg("transparent.svg")
+    }
 }
 ```
 
