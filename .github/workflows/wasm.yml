@@ -1,0 +1,69 @@
+name: Build & deploy WASM examples
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          target: wasm32-unknown-unknown
+
+      - name: Install wasm-bindgen-cli
+        run: cargo install wasm-bindgen-cli --locked
+
+      - name: Build examples (WASM)
+        run: |
+          for ex in examples/*.rs; do
+            name=$(basename "$ex" .rs)
+            cargo build \
+              --target wasm32-unknown-unknown \
+              --release \
+              --example "$name"
+          done
+
+      - name: Generate JS bindings
+        run: |
+          mkdir -p out/wasm
+          for ex in examples/*.rs; do
+            name=$(basename "$ex" .rs)
+            wasm-bindgen \
+              --out-dir "out/wasm" \
+              --target web \
+              "target/wasm32-unknown-unknown/release/examples/$name.wasm"
+          done
+
+      - name: Copy static assets
+        run: |
+          cp index.html out/
+          cp example.html out/
+          cp -r assets out/ 2>/dev/null || true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
