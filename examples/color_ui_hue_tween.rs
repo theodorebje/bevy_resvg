@@ -1,7 +1,4 @@
-use bevy::{
-    color::palettes::css::BLUE,
-    prelude::*,
-};
+use bevy::{color::palettes::css::BLUE, prelude::*};
 use bevy_resvg::prelude::*;
 
 fn main() {
