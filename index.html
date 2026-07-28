@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bevy_resvg examples</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      font-family: system-ui, sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      max-width: 600px;
+    }
+    li { margin: 0; }
+    a {
+      display: block;
+      padding: 0.5rem 1rem;
+      background: #16213e;
+      color: #a8d8ea;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid #0f3460;
+      font-size: 0.9rem;
+      transition: background 0.15s;
+    }
+    a:hover { background: #0f3460; }
+  </style>
+</head>
+<body>
+  <h1>bevy_resvg — WASM examples</h1>
+  <ul id="examples"></ul>
+
+  <script>
+    const examples = [
+      "simple",
+      "simple_scene",
+      "color",
+      "color_change",
+      "color_hue_tween",
+      "color_ui",
+      "color_ui_change",
+      "color_ui_hue_tween",
+      "crisp_shapes",
+      "custom_aspect_ratio",
+      "custom_size",
+      "custom_style_sheet",
+      "ui",
+      "zoom",
+    ];
+    const list = document.getElementById("examples");
+    for (const name of examples) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `example.html?n=${name}`;
+      a.textContent = name.replace(/_/g, " ");
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+  </script>
+</body>
+</html>
