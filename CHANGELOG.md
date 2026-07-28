@@ -1,5 +1,40 @@
 # Changelog
 
+## [2.5.0] - 2026-07-28
+
+### Features
+
+1. Add bsn support
+
+### Other
+
+1. Add bsn support
+
+Add BSN (`bsn!`) template support for `Svg` and `UiSvg`
+
+Derive `FromTemplate` and implement `AsAssetId` for `Svg` and `UiSvg` so
+that asset paths can be written directly in `bsn!` scenes (e.g.
+`UiSvg("icon.svg")`) without threading an `AssetServer` through scene
+functions.
+
+Thank you to @Mimikkk (Daniel Zdancewicz) for creating this PR!
+
+### Documentation
+
+1. Create a separate `simple_scene` example
+2. Add U+FE0F to spider web
+3. Update SLoC and complexity count
+
+### Styling
+
+1. *(fmt)* Run `cargo fmt`
+
+### Miscellaneous Tasks
+
+1. Remove dead reference to `sumi.toml`
+2. Update bsn examples
+3. *(release)* Show current version number
+
 ## [2.4.0] - 2026-06-25
 
 ### Features
@@ -40,6 +75,7 @@ cluttering my repos.
 * docs(CONTRIBUTING): fix spelling mistake
 
 2. Fix release script
+3. *(release)* V2.4.0
 
 ## [2.3.3] - 2026-03-09
 
