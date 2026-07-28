@@ -1,4 +1,7 @@
-use bevy::{color::palettes::css::BLUE, prelude::*};
+use bevy::{
+    color::palettes::css::BLUE,
+    prelude::*,
+};
 use bevy_resvg::prelude::*;
 
 fn main() {
@@ -9,20 +12,24 @@ fn main() {
         .run();
 }
 
-fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server.load("transparent.svg");
-
+fn setup(mut commands: Commands) {
     commands.spawn(Camera2d);
-    commands.spawn((
+    commands.spawn_scene(ui_panel());
+}
+
+fn ui_panel() -> impl Scene {
+    bsn! {
         Node {
             width: px(128),
             height: px(128),
             border: UiRect::all(px(8)),
-            ..default()
-        },
-        BorderColor::all(Color::Srgba(BLUE)),
-        children![(UiSvg(svg), SvgColor(Color::hsl(0.0, 1.0, 0.5)))],
-    ));
+        }
+        BorderColor::all(Color::Srgba(BLUE))
+        Children [
+            UiSvg("transparent.svg")
+            SvgColor(Color::hsl(0.0, 1.0, 0.5))
+        ]
+    }
 }
 
 fn tween_hue_over_time(time: Res<Time>, mut svg_colors: Query<&mut SvgColor, With<UiSvg>>) {

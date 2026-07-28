@@ -11,17 +11,22 @@ fn main() {
         .run();
 }
 
-fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server.load("transparent.svg");
+fn setup(mut commands: Commands) {
     commands.spawn(Camera2d);
-    commands.spawn((
+    commands.spawn_scene(ui_panel());
+}
+
+fn ui_panel() -> impl Scene {
+    bsn! {
         Node {
             width: px(128),
             height: px(128),
             border: UiRect::all(px(8)),
-            ..default()
-        },
-        BorderColor::all(Color::Srgba(BLUE)),
-        children![(UiSvg(svg), SvgColor(Color::Srgba(GREEN)))],
-    ));
+        }
+        BorderColor::all(Color::Srgba(BLUE))
+        Children [
+            UiSvg("transparent.svg")
+            SvgColor(Color::Srgba(GREEN))
+        ]
+    }
 }

@@ -9,10 +9,16 @@ fn main() {
         .run();
 }
 
-fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server.load("transparent.svg");
+fn setup(mut commands: Commands) {
     commands.spawn(Camera2d);
-    commands.spawn((Svg(svg), SvgColor(Color::hsl(0.0, 1.0, 0.5))));
+    commands.spawn_scene(svg_scene());
+}
+
+fn svg_scene() -> impl Scene {
+    bsn! {
+        Svg("transparent.svg")
+        SvgColor(Color::hsl(0.0, 1.0, 0.5))
+    }
 }
 
 fn tween_hue_over_time(time: Res<Time>, mut svg_colors: Query<&mut SvgColor>) {

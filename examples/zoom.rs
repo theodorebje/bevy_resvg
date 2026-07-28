@@ -21,7 +21,12 @@ fn setup_camera(mut commands: Commands) {
     ));
 }
 
-fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server.load("transparent.svg");
-    commands.spawn(Svg(svg));
+fn setup(mut commands: Commands) {
+    commands.spawn_scene(svg_scene());
+}
+
+fn svg_scene() -> impl Scene {
+    bsn! {
+        Svg("transparent.svg")
+    }
 }
