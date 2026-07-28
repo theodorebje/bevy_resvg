@@ -37,6 +37,8 @@ fi
 echo "Checking that project compiles"
 cargo check --all-targets
 
+OLD_VERSION_NUMBER="$(cargo pkgid | cut -d '#' -f2)"
+echo "Current version number: $OLD_VERSION_NUMBER"
 read -p "New version number: " VERSION
 TAG="v${VERSION}"
 
