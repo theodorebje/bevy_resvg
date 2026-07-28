@@ -29,7 +29,7 @@ bevy = { version = "0.19", default-features = true, features = ["debug"] }
 bevy_pancam = "0.21"
 
 [profile.release]
-lto = true
+lto = "thin"
 strip = true
 
 [lints.clippy]
