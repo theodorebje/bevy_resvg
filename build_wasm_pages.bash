@@ -122,10 +122,7 @@ main() {
   done
 
   echo "Building ${#examples[@]} examples for wasm32-unknown-unknown..."
-  for name in "${examples[@]}"; do
-    echo "  building $name"
-    cargo build --target wasm32-unknown-unknown --release --example "$name"
-  done
+  cargo build --target wasm32-unknown-unknown --release --examples
 
   mkdir -p out/wasm
   echo ""
