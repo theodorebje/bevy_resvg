@@ -61,7 +61,7 @@ Here's a complete comparison between the three:
 | 3D-Rendering              | ❌ | Unsupported                           | ✅ | Supported           | ✅ | Supported                          |
 | Animated SVGs             | ❌ | Unsupported                           | ❌ | Unsupported         | ❌ | Unsupported                        |
 | Approach                  | 🖼️ | Rasterisation (once)                  | 🔺 | Tessellation        | ⚙️ | Rasterisation (JIT every frame)    |
-| Output                    | 🏃‍➡️ | `Sprite` (2D) or `ImageNode` (UI)     | 🕸  | `Mesh2d`            | 🔀 | `Mesh2d` with image-based texture  |
+| Output                    | 🏃‍➡️ | `Sprite` (2D) or `ImageNode` (UI)     | 🕸️ | `Mesh2d`            | 🔀 | `Mesh2d` with image-based texture  |
 | Licence                   | 🟰 | MIT OR Apache-2.0                     | 🟰 | MIT OR Apache-2.0   | 🟰 | MIT OR Apache-2.0                  |
 
 >[!NOTE]
