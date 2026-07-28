@@ -28,6 +28,10 @@ jobs:
         with:
           target: wasm32-unknown-unknown
 
+      - uses: Swatinem/rust-cache@v2
+        with:
+          cache-all-crates: true
+
       - name: Install wasm-bindgen-cli & binaryen
         run: |
           cargo install wasm-bindgen-cli --locked
