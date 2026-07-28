@@ -28,6 +28,10 @@ thiserror = ">=1.0, <3.0"
 bevy = { version = "0.19", default-features = true, features = ["debug"] }
 bevy_pancam = "0.21"
 
+[profile.release]
+lto = true
+strip = true
+
 [lints.clippy]
 needless_pass_by_value = { priority = 1, level = "allow" } # Bevy freaks out over references
 nursery = "deny"
