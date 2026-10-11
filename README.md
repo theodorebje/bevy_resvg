@@ -5,7 +5,7 @@ A simple library for rendering SVGs in Bevy using the amazing
 
 [![Crates.io](https://img.shields.io/crates/v/bevy_resvg?style=for-the-badge&logo=rust)](https://crates.io/crates/bevy_resvg)
 [![Documentation](https://img.shields.io/docsrs/bevy_resvg/latest?style=for-the-badge&logo=docsdotrs)](https://docs.rs/bevy_resvg)
-[![Bevy Version](https://img.shields.io/badge/Bevy-v0.19-9B22FF?style=for-the-badge&logo=bevy)](https://bevy.org/news/bevy-0-19/)
+[![Bevy Version](https://img.shields.io/badge/Bevy-v0.20-9B22FF?style=for-the-badge&logo=bevy)](https://bevy.org/news/bevy-0-20/)
 [![Dependency Status](https://img.shields.io/deps-rs/bevy_resvg/latest?style=for-the-badge)](https://deps.rs/repo/github/theodorebje/bevy_resvg)
 
 ## Why not [`bevy_svg`](https://github.com/Weasy666/bevy_svg)?
