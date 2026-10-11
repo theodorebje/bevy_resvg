@@ -48,7 +48,7 @@ Here's a complete comparison between the three:
 |          Feature          |    |              Bevy Resvg               |    |     `bevy_svg`      |    |             Bevy Vello             |
 | ------------------------- | -- | ------------------------------------- | -- | ------------------- | -- | ---------------------------------- |
 | Source Lines of Code      | 🔽 |                              1015[^1] | 🔼 |        1904[^1][^2] | ⏫ |                       6361[^1][^3] |
-| Code Complexity           | 😀 |                                64[^1] | 😵‍💫 |         145[^1][^2] | 😵 |                        409[^1][^3] |
+| Code Complexity           | 😀 |                                73[^1] | 😵‍💫 |         145[^1][^2] | 😵 |                        409[^1][^3] |
 | Hot-reloading of SVGs     | ✅ | Supported                             | ✅ | Supported           | ❌ | Unsupported                        |
 | Changing runtime colour   | ✅ | Supported                             | ❌ | Unsupported         | ❌ | Unsupported                        |
 | Custom CSS injection      | ✅ | Supported                             | ❌ | Unsupported         | ❌ | Unsupported                        |
