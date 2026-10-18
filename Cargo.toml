@@ -9,7 +9,7 @@ license = "MIT OR Apache-2.0"
 name = "bevy_resvg"
 readme = "README.md"
 repository = "https://github.com/theodorebje/bevy_resvg"
-rust-version = "1.95"
+rust-version = "1.97.1"
 version = "2.6.0-beta"
 
 [dependencies]
