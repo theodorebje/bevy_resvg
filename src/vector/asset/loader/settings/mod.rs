@@ -2,7 +2,7 @@
 /// of the types used in [`Options`](resvg::usvg::Options).
 pub mod options;
 
-use crate::settings::options::OptionsDef;
+use self::options::OptionsDef;
 use serde::{Deserialize, Serialize};
 
 /// Settings for the parsing and rendering of an SVG file.

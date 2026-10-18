@@ -3,7 +3,7 @@ pub mod loader;
 
 use crate::{
     error::{Result, SvgError},
-    settings::TargetRenderSize,
+    vector::asset::loader::settings::TargetRenderSize,
 };
 use bevy::{
     asset::RenderAssetUsages,

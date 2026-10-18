@@ -5,5 +5,5 @@ pub use crate::{
         asset::SvgFile,
         component::{Svg, UiSvg},
     },
-    settings::{SvgFileLoaderSettings, TargetRenderSize},
+    vector::asset::loader::settings::{SvgFileLoaderSettings, TargetRenderSize},
 };

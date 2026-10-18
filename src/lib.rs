@@ -13,9 +13,6 @@ pub mod prelude;
 /// Tools and helpers for loading, rastering, and rendering
 /// [`SVG`](https://en.wikipedia.org/wiki/SVG) files.
 pub mod raster;
-/// [`AssetLoader`](bevy::asset::AssetLoader) settings for
-/// [`SvgFile`](crate::prelude::SvgFile)
-pub mod settings;
 /// Tools and helpers for loading [`SVG`](https://en.wikipedia.org/wiki/SVG)
 /// files.
 pub(crate) mod vector;

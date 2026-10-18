@@ -1,3 +1,7 @@
+/// [`AssetLoader`](bevy::asset::AssetLoader) settings for
+/// [`SvgFile`](crate::prelude::SvgFile)
+pub mod settings;
+
 use crate::{error::SvgError, prelude::SvgFileLoaderSettings, vector::asset::SvgVectorAsset};
 use bevy::{
     asset::{AssetLoader, LoadContext, io::Reader},
