@@ -7,7 +7,7 @@ use resvg::usvg::NonZeroPositiveF32;
 
 /// In order to prevent memory exhaustion from heavily-zoomed-in
 /// [`SVG`](https://en.wikipedia.org/wiki/SVG)s, a resolution limit is put in place.
-pub const DEFAULT_MAX_AUTO_RESOLUTION: NonZeroU32 = NonZeroU32::new(4096).unwrap();
+pub(crate) const DEFAULT_MAX_AUTO_RESOLUTION: NonZeroU32 = NonZeroU32::new(4096).unwrap();
 
 /// A colour tint to apply to an SVG when rendering.
 /// This will be multiplied with the SVG's original colours.

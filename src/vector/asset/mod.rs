@@ -24,10 +24,10 @@ use std::{
 ///
 /// [^1]: Only visually lossless for the static SVG subset.
 #[derive(TypePath, Asset)]
-pub struct SvgAsset(pub Arc<Tree>);
+pub struct SvgAsset(pub(crate) Arc<Tree>);
 
 #[derive(Debug, Clone, Copy)]
-pub struct IntSize {
+pub(crate) struct IntSize {
     pub width: NonZeroU32,
     pub height: NonZeroU32,
 }
@@ -58,7 +58,7 @@ impl Default for IntSize {
 /// it's [`true`](bool), further iteration is prevented and [`None`] is returned. However, due to
 /// visibility in [`resvg`], this only works for top-level nodes. A deeply nested node may still
 /// block even after `cancelled` has been set to [`AtomicBool::new(true)`](AtomicBool::new).
-pub fn rasterise(tree: &Tree, size: IntSize, cancel: &AtomicBool) -> Option<Image> {
+pub(crate) fn rasterise(tree: &Tree, size: IntSize, cancel: &AtomicBool) -> Option<Image> {
     let (width, height) = size.dimensions();
     let original_size = tree.size();
     let (original_width, original_height) = (original_size.width(), original_size.height());

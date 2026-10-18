@@ -15,7 +15,7 @@ use std::sync::Arc;
 /// Loads an [`SVG`](https://en.wikipedia.org/wiki/SVG) file into an [`SvgAsset`] containing a
 /// [`Tree`].
 #[derive(Default, TypePath)]
-pub struct SvgAssetLoader;
+pub(crate) struct SvgAssetLoader;
 
 impl AssetLoader for SvgAssetLoader {
     type Asset = SvgAsset;
