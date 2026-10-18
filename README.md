@@ -109,10 +109,10 @@ This has the unfortunate side effect of causing blurry images when zooming in.
 `bevy_svg`, however, tessellates the SVGs into a crisp `Mesh2d`, which results in
 sharper rendering when zoomed in.
 
-If you wish to mitigate the blur, you can set a custom target render size via
-`SvgFileLoaderSettings.target_render_size`. This allows you to render a larger
-image up front. However, this has the caveat of requiring you to manually
-determine how far a user is likely to zoom in on your SVGs. See the
+If you wish to mitigate the blur, you can set a custom target render size using
+the `SvgSize` component. This allows you to render a larger image up front.
+However, this has the caveat of requiring you to manually determine how far a
+user is likely to zoom in on your SVGs. See the
 [`custom_size`](./examples/custom_size.rs) example for a demonstration of this.
 
 However, if you are in need of rendering semi-transparent SVGs, then Bevy Resvg
@@ -196,7 +196,7 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server.load("transparent.svg");
+    let svg: Handle<SvgAsset> = asset_server.load("transparent.svg");
     commands.spawn(Camera2d);
     commands.spawn(Svg(svg));
 }
@@ -239,8 +239,8 @@ actions:
 1. Run `cargo remove bevy_svg` and `cargo add bevy_resvg`.
 2. If you were just using `bevy_svg::prelude` in your code, simply replace it
    with `bevy_resvg::prelude`.
-3. Replace all occurrences of `Svg` with `SvgFile` (make sure you're doing
-   whole-word replacing. You don't want an `SvgFilePlugin`!).
+3. Replace all occurrences of `Svg` with `SvgAsset` (make sure you're doing
+   whole-word replacing. You don't want an `SvgAssetPlugin`!).
 4. Replace all occurrences of `Svg2d` with either `Svg` or `UiSvg` (depending on
    how you're using it). This step requires a bit of care so that you don't use
    the wrong one!
@@ -253,6 +253,7 @@ actions:
 - [ ] Add tests (there are currently none…)
 - [x] Custom rendering size targets (not dependent on `viewBox` value) <a id="custom-render-size"></a>
 - [x] UI rendering
+- [ ] Animated SVGs!
 - [ ] Expand [comparison table](#comparison-between-bevy-resvg-bevy_svg-and-bevy-vello)
   - [ ] Particularly, add performance comparisons
 - [x] Handle more
