@@ -1,4 +1,4 @@
-/// The [`AssetLoader`](bevy::asset::AssetLoader) for [`SvgVectorAsset`]s.
+/// The [`AssetLoader`](bevy::asset::AssetLoader) for [`SvgAsset`]s.
 pub mod loader;
 
 use crate::{
@@ -20,10 +20,10 @@ use resvg::{
 ///
 /// [^1]: Only lossless for the static SVG subset.
 #[derive(TypePath, Asset)]
-pub struct SvgVectorAsset(pub Tree);
+pub struct SvgAsset(pub Tree);
 
-impl From<&SvgVectorAsset> for TargetRenderSize {
-    fn from(value: &SvgVectorAsset) -> Self {
+impl From<&SvgAsset> for TargetRenderSize {
+    fn from(value: &SvgAsset) -> Self {
         let (width, height) = value.0.size().to_int_size().dimensions();
         Self { width, height }
     }
@@ -39,8 +39,8 @@ impl From<TargetRenderSize> for Extent3d {
     }
 }
 
-impl SvgVectorAsset {
-    /// Renders and rasterises an [`SvgVectorAsset`] containing a [`Tree`] into
+impl SvgAsset {
+    /// Renders and rasterises an [`SvgAsset`] containing a [`Tree`] into
     /// a [`Pixmap`] using [`resvg`]'s [`render`](resvg::render) function.
     ///
     /// ## Precision loss
@@ -72,7 +72,7 @@ impl SvgVectorAsset {
         Ok(buf)
     }
 
-    /// Renders and rasterises an [`SvgVectorAsset`] containing a [`Tree`] into
+    /// Renders and rasterises an [`SvgAsset`] containing a [`Tree`] into
     /// an [`Image`] using the [`render`](Self::render) method.
     ///
     /// If `size` is set to `None`, then the `Size` will be set to the SVG

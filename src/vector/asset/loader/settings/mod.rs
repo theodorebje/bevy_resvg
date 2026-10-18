@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 /// Settings for the parsing and rendering of an SVG file.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 #[non_exhaustive]
-pub struct SvgFileLoaderSettings {
+pub struct SvgAssetLoaderSettings {
     /// Optional fixed target size for rendering.
     ///
     /// If `None`, the SVG's
