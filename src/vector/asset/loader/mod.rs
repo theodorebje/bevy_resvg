@@ -8,6 +8,7 @@ use bevy::{
     tasks::ConditionalSendFuture,
 };
 use resvg::usvg::Tree;
+use std::sync::Arc;
 
 /// The [`AssetLoader`] for [`SvgAsset`]s.
 ///
@@ -31,7 +32,7 @@ impl AssetLoader for SvgAssetLoader {
             let mut buf = Vec::new();
             reader.read_to_end(&mut buf).await?;
             let tree = Tree::from_data(&buf, &settings.options.clone().into())?;
-            Ok(SvgAsset(tree))
+            Ok(SvgAsset(Arc::new(tree)))
         })
     }
 

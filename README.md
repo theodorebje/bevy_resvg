@@ -57,10 +57,10 @@ Here's a complete comparison between the three:
 | Positioning and sizing    | ✅ | Native (`Sprite` & `ImageNode`-based) | ❌ | Janky and imprecise | ✅ | Native (`Image`-based)             |
 | Static SVG Spec Support   | ✅ | Fully Supported                       | ⚠️ | Partial Support     | ⚠️ | Partial Support                    |
 | Rendered quality (normal) | ✅ | Crisp                                 | ✅ | Crisp               | ✅ | Crisp                              |
-| Rendered quality (zoomed) | ❌ | Blurry and Pixelated                  | ✅ | Crisp               | ✅ | Crisp                              |
+| Rendered quality (zoomed) | ⚠️ | Pixelated (once) / Crisp (adaptive)   | ✅ | Crisp               | ✅ | Crisp                              |
 | 3D-Rendering              | ❌ | Unsupported                           | ✅ | Supported           | ✅ | Supported                          |
 | Animated SVGs             | ❌ | Unsupported                           | ❌ | Unsupported         | ❌ | Unsupported                        |
-| Approach                  | 🖼️ | Rasterisation (once)                  | 🔺 | Tessellation        | ⚙️ | Rasterisation (JIT every frame)    |
+| Approach                  | 🖼️ | Rasterisation (once or adaptive)      | 🔺 | Tessellation        | ⚙️ | Rasterisation (JIT every frame)    |
 | Output                    | 🏃‍➡️ | `Sprite` (2D) or `ImageNode` (UI)     | 🕸️ | `Mesh2d`            | 🔀 | `Mesh2d` with image-based texture  |
 | Licence                   | 🟰 | MIT OR Apache-2.0                     | 🟰 | MIT OR Apache-2.0   | 🟰 | MIT OR Apache-2.0                  |
 
@@ -101,12 +101,15 @@ support in `bevy_svg`. Unfortunately, you can't easily render to 3D objects with
 Bevy Resvg, yet. Don't worry, it's on the [To-do list](#todos)! In the meantime,
 check out `bevy_svg` if you need to render to a 3D object.
 
-Furthermore, if your game is dependent on zooming into the SVGs,
-`bevy_svg` might fit your needs better. Bevy Resvg only performs
-rasterisation once, mimicking the behaviour of e.g. the
+Furthermore, if your game is dependent on zooming into the SVGs, `bevy_svg`
+might fit your needs better. By default, Bevy Resvg only performs rasterisation
+once, mimicking the behaviour of e.g. the
 [Godot Engine](https://forum.godotengine.org/t/how-to-make-svg-not-pixelated/92365).
 This has the unfortunate side effect of causing blurry images when zooming in.
-`bevy_svg`, however, tessellates the SVGs into a crisp `Mesh2d`, which results in
+However, `SvgSize::auto()` enables adaptive (async, on-demand) rasterisation,
+which re-rasterises at the resolution the SVG currently occupies on screen, so
+zoomed-in SVGs stay crisp at the cost of some extra GPU memory. `bevy_svg`,
+however, tessellates the SVGs into a crisp `Mesh2d`, which results in
 sharper rendering when zoomed in.
 
 If you wish to mitigate the blur, you can set a custom target render size using
@@ -152,6 +155,11 @@ Resvg.
 
 Currently, the only examples are:
 
+- [`auto_size`](./examples/auto_size.rs): shows how to use `SvgSize::auto()` to
+  automatically set an appropiate size.
+- [`auto_size_ui`](./examples/auto_size.rs): shows how to use `SvgSize::auto()`
+  for changing the size of a scale-tweening UI element.
+  automatically set an appropiate size.
 - [`color_change`](./examples/color_change.rs): shows how to update the
   colour tint of an `Svg` when an event (spacebar pressed) occurs
 - [`color_hue_tween`](./examples/color_hue_tween.rs): showcase of an `Svg`
@@ -170,7 +178,7 @@ Currently, the only examples are:
 - [`custom_aspect_ratio`](./examples/custom_aspect_ratio.rs): shows how to
   render an SVG to a custom target size with a non-native aspect ratio
 - [`custom_size`](./examples/custom_size.rs): shows how to render an SVG to a
-  custom target size
+  custom target size using `SvgSize`
 - [`custom_style_sheet`](./examples/custom_style_sheet.rs): shows how to
   customise `usvg::Options` while loading an SVG by setting `style_sheet`
 - [`simple`](./examples/simple.rs): shows the most basic usage of Bevy Resvg
@@ -248,7 +256,7 @@ actions:
 ## Todos
 
 - [ ] 3D-Rendering support
-- [ ] JIT support! (because it's cool, I doubt that it is performant lol)
+- [x] JIT support! (because it's cool, I doubt that it is performant lol)
 - [ ] Add more examples
 - [ ] Add tests (there are currently none…)
 - [x] Custom rendering size targets (not dependent on `viewBox` value) <a id="custom-render-size"></a>

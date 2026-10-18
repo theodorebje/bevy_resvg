@@ -28,9 +28,11 @@ fn setup(mut commands: Commands) {
 fn svg_scene() -> impl Scene {
     bsn! {
         Svg("transparent.svg")
-        SvgSize {
+        SvgSize { // texture resolution, does not change rendered aspect ratio
             width: Unit::pixels(1024),
             height: Unit::pixels(512),
         }
+        // world size, does not change rasterised aspect ratio
+        Transform::from_scale(Vec3::new(2.0, 1.0, 1.0))
     }
 }
