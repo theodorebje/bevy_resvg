@@ -1,5 +1,30 @@
 # Changelog
 
+## [3.0.0] - 2026-10-18
+
+### Features
+
+1. [*BREAKING*] Add Unit and rework SvgSize
+2. Add auto (adaptive) sizing
+
+### Refactor
+
+1. Use the first-party bevy_camera_controller
+2. [*BREAKING*] Move settings under the asset loader
+3. [*BREAKING*] Rename SvgVectorAsset to SvgAsset
+4. [*BREAKING*] Rasterise SVGs in ECS systems
+5. Restrict visibility
+
+### Documentation
+
+1. Update README for the new API
+2. Update README.md
+
+### Miscellaneous Tasks
+
+1. Dynamically link bevy to make compiles faster
+2. Bump msrv
+
 ## [2.6.0-beta] - 2026-10-11
 
 ### Features
@@ -20,6 +45,7 @@
 5. Use thin lto
 6. [*BREAKING*] Bump bevy to 0.20
 7. Bump resvg
+8. *(release)* V2.6.0-beta
 
 ## [2.5.0] - 2026-07-28
 
