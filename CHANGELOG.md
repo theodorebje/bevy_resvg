@@ -1,12 +1,55 @@
 # Changelog
 
-## [2.5.0] - 2026-07-28
+## [3.0.0] - 2026-10-18
 
 ### Features
 
-1. Add bsn support
+1. [*BREAKING*] Add Unit and rework SvgSize
+2. Add auto (adaptive) sizing
 
-### Other
+### Refactor
+
+1. Use the first-party bevy_camera_controller
+2. [*BREAKING*] Move settings under the asset loader
+3. [*BREAKING*] Rename SvgVectorAsset to SvgAsset
+4. [*BREAKING*] Rasterise SVGs in ECS systems
+5. Restrict visibility
+
+### Documentation
+
+1. Update README for the new API
+2. Update README.md
+
+### Miscellaneous Tasks
+
+1. Dynamically link bevy to make compiles faster
+2. Bump msrv
+
+## [2.6.0-beta] - 2026-10-11
+
+### Features
+
+1. Add pages
+2. Configure example pages
+
+### Documentation
+
+1. Update SLoC and complexity count
+
+### Miscellaneous Tasks
+
+1. *(release)* Make merge a separate category
+2. Add caching
+3. Simplify building
+4. Limit to 2 jobs at a time
+5. Use thin lto
+6. [*BREAKING*] Bump bevy to 0.20
+7. Bump resvg
+8. *(release)* V2.6.0-beta
+
+## [2.5.0] - 2026-07-28
+
+### Merged PRs
 
 1. Add bsn support
 
@@ -18,6 +61,10 @@ that asset paths can be written directly in `bsn!` scenes (e.g.
 functions.
 
 Thank you to @Mimikkk (Daniel Zdancewicz) for creating this PR!
+
+### Features
+
+1. Add bsn support
 
 ### Documentation
 
@@ -34,6 +81,7 @@ Thank you to @Mimikkk (Daniel Zdancewicz) for creating this PR!
 1. Remove dead reference to `sumi.toml`
 2. Update bsn examples
 3. *(release)* Show current version number
+4. *(release)* V2.5.0
 
 ## [2.4.0] - 2026-06-25
 
@@ -160,11 +208,7 @@ ChatGPT wrote it since I don't know any `awk` syntax.
 
 ## [2.3.0] - 2026-03-08
 
-### Features
-
-1. Add `usvg::Options` support
-
-### Other
+### Merged PRs
 
 1. `serde-remote` into `main`
 
@@ -205,6 +249,10 @@ as described in the `USAGE.md` file in the `resvg-option` branch's root.
 </tr>
 </table>
 
+### Features
+
+1. Add `usvg::Options` support
+
 ### Refactor
 
 1. Simplify macros
@@ -228,19 +276,6 @@ as described in the `USAGE.md` file in the `resvg-option` branch's root.
 
 1. Add target render size
 
-### Documentation
-
-1. *(release)* Don't skip any proper commits
-2. *(release)* Correct whitespace in changelog
-3. Update SLoC and complexity count
-
-### Miscellaneous Tasks
-
-1. *(sumi)* Add `revert` as commit type
-2. Temporary commit
-3. *(deps)* Don't require patch version
-4. *(release)* V2.2.0
-
 ### Revert
 
 1. Chore: don't put chore(release) in `CHANGELOG.md`
@@ -255,6 +290,19 @@ as described in the `USAGE.md` file in the `resvg-option` branch's root.
 <td>a2c0f9d5fbd28edd84d6f2fe2e2718f05bd1bb6a</td>
 </tr>
 </table>
+
+### Documentation
+
+1. *(release)* Don't skip any proper commits
+2. *(release)* Correct whitespace in changelog
+3. Update SLoC and complexity count
+
+### Miscellaneous Tasks
+
+1. *(sumi)* Add `revert` as commit type
+2. Temporary commit
+3. *(deps)* Don't require patch version
+4. *(release)* V2.2.0
 
 ## [2.1.0] - 2026-03-07
 
@@ -283,6 +331,10 @@ not.
 1. *(release)* V2.1.0
 
 ## [2.0.0] - 2026-03-07
+
+### Merged PRs
+
+1. `all-asset-events` into `main`
 
 ### Features
 
@@ -316,10 +368,6 @@ We react to `LoadedWithDependencies` instead.</td>
 </table>
 
 2. *(README)* Correct factual error about bevy_svg
-
-### Other
-
-1. `all-asset-events` into `main`
 
 ### Documentation
 
@@ -375,13 +423,13 @@ although I haven't actually tested it.
 
 ## [1.0.1] - 2026-01-24
 
-### Bugfixes
-
-1. Make `zoom.rs` example compile
-
 ### Other
 
 1. *(release)* Release v1.0.1
+
+### Bugfixes
+
+1. Make `zoom.rs` example compile
 
 ### Documentation
 

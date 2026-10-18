@@ -1,6 +1,7 @@
 #![doc = include_str!("../README.md")]
 
-/// Runtime modification of [`SVG`](https://en.wikipedia.org/wiki/SVG) files.
+/// Runtime modification of [`SVG`](https://en.wikipedia.org/wiki/SVG)
+/// files.
 pub mod effects;
 /// Error utilities for this crate.
 pub mod error;
@@ -13,11 +14,8 @@ pub mod prelude;
 /// Tools and helpers for loading, rastering, and rendering
 /// [`SVG`](https://en.wikipedia.org/wiki/SVG) files.
 pub mod raster;
-/// [`AssetLoader`](bevy::asset::AssetLoader) settings for
-/// [`SvgFile`](crate::prelude::SvgFile)
-pub mod settings;
 /// Tools and helpers for loading [`SVG`](https://en.wikipedia.org/wiki/SVG)
 /// files.
-pub(crate) mod vector;
+pub mod vector;
 
 pub use resvg;

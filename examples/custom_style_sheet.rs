@@ -9,9 +9,9 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server
+    let svg: Handle<SvgAsset> = asset_server
         .load_builder()
-        .with_settings(|settings: &mut SvgFileLoaderSettings| {
+        .with_settings(|settings: &mut SvgAssetLoaderSettings| {
             settings.options.style_sheet = Some(String::from(
                 "circle {
                     fill: #00ff00;

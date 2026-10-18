@@ -1,5 +1,7 @@
-use bevy::prelude::*;
-use bevy_pancam::{DirectionKeys, PanCam, PanCamPlugin};
+use bevy::{
+    camera_controller::pan_camera::{PanCamera, PanCameraPlugin},
+    prelude::*,
+};
 use bevy_resvg::prelude::*;
 
 fn main() {
@@ -7,7 +9,7 @@ fn main() {
         .add_plugins((
             DefaultPlugins.set(ImagePlugin::default_nearest()), // Bevy anti-aliases sprites by default. This disables anti-aliasing.
             SvgPlugin,
-            PanCamPlugin,
+            PanCameraPlugin,
         ))
         .add_systems(Startup, (setup, setup_camera))
         .run();
@@ -16,19 +18,17 @@ fn main() {
 fn setup_camera(mut commands: Commands) {
     commands.spawn((
         Camera2d,
-        PanCam {
-            grab_buttons: vec![],
-            move_keys: DirectionKeys::NONE,
-            zoom_to_cursor: false,
+        PanCamera {
+            pan_speed: 100.,
             ..default()
         },
     ));
 }
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server
+    let svg: Handle<SvgAsset> = asset_server
         .load_builder()
-        .with_settings(|settings: &mut SvgFileLoaderSettings| {
+        .with_settings(|settings: &mut SvgAssetLoaderSettings| {
             settings.options.shape_rendering = bevy_resvg::resvg::usvg::ShapeRendering::CrispEdges; // This tells `resvg` to not do any anti-aliasing.
         })
         .load("transparent.svg");

@@ -9,24 +9,23 @@ license = "MIT OR Apache-2.0"
 name = "bevy_resvg"
 readme = "README.md"
 repository = "https://github.com/theodorebje/bevy_resvg"
-rust-version = "1.95"
-version = "2.5.0"
+rust-version = "1.97.1"
+version = "3.0.0"
 
 [dependencies]
-bevy = { version = "0.19", default-features = false, features = [
+bevy = { version = "0.20", default-features = false, features = [
     "bevy_log",
     "bevy_sprite_render",
     "bevy_ui",
     "std",
 ] }
 pastey = "0.2.1"
-resvg = ">=0.42, ^0.47"
+resvg = ">=0.42, ^0.48"
 serde = { version = "1.0", features = ["derive"] }
 thiserror = ">=1.0, <3.0"
 
 [dev-dependencies]
-bevy = { version = "0.19", default-features = true, features = ["debug"] }
-bevy_pancam = "0.21"
+bevy = { version = "0.20", default-features = true, features = ["debug", "pan_camera", "dynamic_linking"] }
 
 [profile.release]
 lto = "thin"

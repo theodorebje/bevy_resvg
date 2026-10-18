@@ -1,21 +1,25 @@
-use crate::{error::SvgError, prelude::SvgFileLoaderSettings, vector::asset::SvgVectorAsset};
+/// [`SvgAssetLoaderSettings`] for [`SvgAsset`]'s [`SvgAssetLoader`].
+pub mod settings;
+
+use crate::{error::SvgError, prelude::SvgAssetLoaderSettings, vector::asset::SvgAsset};
 use bevy::{
     asset::{AssetLoader, LoadContext, io::Reader},
     prelude::*,
     tasks::ConditionalSendFuture,
 };
 use resvg::usvg::Tree;
+use std::sync::Arc;
 
-/// The [`AssetLoader`] for [`SvgVectorAsset`]s.
+/// The [`AssetLoader`] for [`SvgAsset`]s.
 ///
-/// Loads an [`SVG`](https://en.wikipedia.org/wiki/SVG) file into an
-/// [`SvgVectorAsset`] containing a [`Tree`].
+/// Loads an [`SVG`](https://en.wikipedia.org/wiki/SVG) file into an [`SvgAsset`] containing a
+/// [`Tree`].
 #[derive(Default, TypePath)]
-pub struct SvgVectorAssetLoader;
+pub(crate) struct SvgAssetLoader;
 
-impl AssetLoader for SvgVectorAssetLoader {
-    type Asset = SvgVectorAsset;
-    type Settings = SvgFileLoaderSettings;
+impl AssetLoader for SvgAssetLoader {
+    type Asset = SvgAsset;
+    type Settings = SvgAssetLoaderSettings;
     type Error = SvgError;
 
     fn load(
@@ -28,7 +32,7 @@ impl AssetLoader for SvgVectorAssetLoader {
             let mut buf = Vec::new();
             reader.read_to_end(&mut buf).await?;
             let tree = Tree::from_data(&buf, &settings.options.clone().into())?;
-            Ok(SvgVectorAsset(tree))
+            Ok(SvgAsset(Arc::new(tree)))
         })
     }
 
