@@ -1,5 +1,5 @@
 pub use crate::{
-    effects::components::SvgColor,
+    effects::components::{SvgColor, SvgSize, Unit},
     plugin::SvgPlugin,
     raster::{
         asset::SvgFile,
