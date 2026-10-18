@@ -21,15 +21,16 @@ fn setup_camera(mut commands: Commands) {
     ));
 }
 
-fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    let svg: Handle<SvgFile> = asset_server
-        .load_builder()
-        .with_settings(|settings: &mut SvgFileLoaderSettings| {
-            settings.target_render_size = Some(TargetRenderSize {
-                width: 1024,
-                height: 512,
-            });
-        })
-        .load("transparent.svg");
-    commands.spawn(Svg(svg));
+fn setup(mut commands: Commands) {
+    commands.spawn_scene(svg_scene());
+}
+
+fn svg_scene() -> impl Scene {
+    bsn! {
+        Svg("transparent.svg")
+        SvgSize {
+            width: Unit::pixels(1024),
+            height: Unit::pixels(512),
+        }
+    }
 }

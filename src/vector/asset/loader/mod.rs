@@ -1,5 +1,4 @@
-/// [`AssetLoader`](bevy::asset::AssetLoader) settings for
-/// [`SvgFile`](crate::prelude::SvgFile)
+/// [`SvgAssetLoaderSettings`] for [`SvgAsset`]'s [`SvgAssetLoader`].
 pub mod settings;
 
 use crate::{error::SvgError, prelude::SvgAssetLoaderSettings, vector::asset::SvgAsset};
@@ -12,8 +11,8 @@ use resvg::usvg::Tree;
 
 /// The [`AssetLoader`] for [`SvgAsset`]s.
 ///
-/// Loads an [`SVG`](https://en.wikipedia.org/wiki/SVG) file into an
-/// [`SvgAsset`] containing a [`Tree`].
+/// Loads an [`SVG`](https://en.wikipedia.org/wiki/SVG) file into an [`SvgAsset`] containing a
+/// [`Tree`].
 #[derive(Default, TypePath)]
 pub struct SvgAssetLoader;
 

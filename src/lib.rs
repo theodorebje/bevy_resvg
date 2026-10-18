@@ -1,6 +1,7 @@
 #![doc = include_str!("../README.md")]
 
-/// Runtime modification of [`SVG`](https://en.wikipedia.org/wiki/SVG) files.
+/// Runtime modification of [`SVG`](https://en.wikipedia.org/wiki/SVG)
+/// files.
 pub mod effects;
 /// Error utilities for this crate.
 pub mod error;
@@ -15,6 +16,6 @@ pub mod prelude;
 pub mod raster;
 /// Tools and helpers for loading [`SVG`](https://en.wikipedia.org/wiki/SVG)
 /// files.
-pub(crate) mod vector;
+pub mod vector;
 
 pub use resvg;

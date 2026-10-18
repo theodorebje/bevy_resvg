@@ -20,8 +20,3 @@ pub enum SvgError {
     #[error("SVG must not have a zeroed viewBox")]
     Empty,
 }
-
-/// A type alias for brevity. Uses the [`SvgError`] enum as the error type.
-///
-/// See [`Result`](::std::result::Result) for details.
-pub(crate) type Result<T> = ::std::result::Result<T, SvgError>;

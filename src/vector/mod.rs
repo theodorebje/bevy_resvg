@@ -5,4 +5,4 @@ pub mod asset;
 /// The [`Plugin`](bevy::app::Plugin) for initialising the
 /// [Vector](https://en.wikipedia.org/wiki/Vector_graphics)
 /// [`Asset`](bevy::asset::Asset) and [`AssetLoader`](bevy::asset::AssetLoader).
-pub mod plugin;
+pub(crate) mod plugin;

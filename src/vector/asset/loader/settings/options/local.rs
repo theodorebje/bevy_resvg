@@ -61,6 +61,6 @@ pub struct SizeDef {
 #[allow(clippy::fallible_impl_from)] // `serde::Deserialize` requires an infallible impl.
 impl From<SizeDef> for Size {
     fn from(value: SizeDef) -> Self {
-        Self::from_wh(value.width, value.height).unwrap()
+        Self::from_wh(value.width, value.height).expect("the size must not be zero")
     }
 }

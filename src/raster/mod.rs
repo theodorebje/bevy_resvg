@@ -1,8 +1,5 @@
-/// The [`Asset`](bevy::asset::Asset) used for rasterising
-/// [`SVG`](https://en.wikipedia.org/wiki/SVG) files.
-pub mod asset;
 /// The [`Component`](bevy::ecs::component::Component) that one needs to wrap
-/// [`SvgFile`](crate::raster::asset::SvgFile)s in before spawning
+/// [`SvgAsset`](crate::vector::asset::SvgAsset)s in before spawning
 /// them.
 pub mod component;
 /// The [`Plugin`](bevy::app::Plugin) for initialising the
