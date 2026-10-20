@@ -73,7 +73,7 @@ pub fn sync_svg_auto_sizes(
         };
         let applied = auto_rasters.get(entity).map_or_else(
             |_| {
-                commands.entity(entity).insert(AutoRaster {
+                commands.entity(entity).try_insert(AutoRaster {
                     applied: applied_seed,
                 });
                 applied_seed

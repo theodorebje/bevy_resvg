@@ -32,7 +32,7 @@ pub fn apply_finished_rasters(
         );
         match pending.intent {
             RasterIntent::InsertSprite { color, world } => {
-                commands.entity(pending.entity).insert(Sprite {
+                commands.entity(pending.entity).try_insert(Sprite {
                     image: handle,
                     color,
                     custom_size: Some(world),
@@ -46,7 +46,7 @@ pub fn apply_finished_rasters(
                 }
             }
             RasterIntent::InsertImageNode(color) => {
-                commands.entity(pending.entity).insert(ImageNode {
+                commands.entity(pending.entity).try_insert(ImageNode {
                     image: handle,
                     color,
                     ..default()
