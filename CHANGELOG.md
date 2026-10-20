@@ -1,5 +1,38 @@
 # Changelog
 
+## [3.0.1] - 2026-10-20
+
+### Merged PRs
+
+1. 3.0.0
+2. Panic-despawn
+
+### Bugfixes
+
+1. Cancel rasterisation for despawned entities
+2. Ignore despawned entities when rendering svgs
+
+<table>
+<tr>
+<th>Token</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>Fixes</td>
+<td>#9</td>
+</tr>
+</table>
+
+3. Update update_readme_metrics.bash's format
+
+### Documentation
+
+1. Update SLoC and complexity count
+
+### Styling
+
+1. Use inspect rather than if let Some
+
 ## [3.0.0] - 2026-10-18
 
 ### Features
@@ -24,6 +57,7 @@
 
 1. Dynamically link bevy to make compiles faster
 2. Bump msrv
+3. *(release)* V3.0.0
 
 ## [2.6.0-beta] - 2026-10-11
 
