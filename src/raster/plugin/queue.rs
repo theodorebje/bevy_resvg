@@ -68,16 +68,15 @@ impl RasterQueue {
     }
 
     pub fn cancel(&mut self, entity: Entity) {
-        if let Some(flagged) = NonZero::new(
+        NonZero::new(
             self.0
                 .extract_if(.., |pending| pending.entity == entity)
                 .inspect(|pending| {
                     pending.cancel.store(true, Ordering::Relaxed);
                 })
                 .count(),
-        ) {
-            debug!("CANCEL {entity:?}: abandoned {flagged} in-flight raster(s)");
-        }
+        )
+        .inspect(|flagged| debug!("CANCEL {entity:?}: abandoned {flagged} in-flight raster(s)"));
     }
 
     pub fn is_busy(&self, entity: Entity) -> bool {
