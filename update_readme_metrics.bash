@@ -44,14 +44,16 @@ complexity="${metrics##*,}"
 tmp="$(mktemp)"
 trap 'rm -f "$tmp"' EXIT
 
-# Replace the metric value (before [^1]) in the matching table rows
-awk -v loc="$loc" -v complexity="$complexity" '
-    /^\|[[:space:]]*Source Lines of Code[[:space:]]*\|/ {
-        $0 = gensub(/(\|[[:space:]]*)[^|]*(\[\^1\][[:space:]]*\|)/, "\\1" loc "\\2", 1)
+# Replace the Bevy Resvg column value in the matching table rows.
+# Note: the [^1] footnote marker now lives on the label instead of the value,
+# so match the row by its label and update the value column (4th |-delimited field).
+awk -F'|' -v OFS='|' -v loc="$loc" -v complexity="$complexity" '
+    $2 ~ /Source Lines of Code/ {
+        gsub(/[0-9][0-9,]*/, loc, $4)
         loc_updated = 1
     }
-    /^\|[[:space:]]*Code Complexity[[:space:]]*\|/ {
-        $0 = gensub(/(\|[[:space:]]*)[^|]*(\[\^1\][[:space:]]*\|)/, "\\1" complexity "\\2", 1)
+    $2 ~ /Code Complexity/ {
+        gsub(/[0-9][0-9,]*/, complexity, $4)
         complexity_updated = 1
     }
     { print }
