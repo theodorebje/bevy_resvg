@@ -1,11 +1,17 @@
-use crate::vector::asset::{IntSize, rasterise};
+use crate::{
+    raster::component::{Svg, UiSvg},
+    vector::asset::{IntSize, rasterise},
+};
 use bevy::{
     prelude::*,
     tasks::{AsyncComputeTaskPool, Task},
 };
-use std::sync::{
-    Arc,
-    atomic::{AtomicBool, Ordering},
+use std::{
+    num::NonZero,
+    sync::{
+        Arc,
+        atomic::{AtomicBool, Ordering},
+    },
 };
 
 #[derive(Clone, Copy, Debug)]
@@ -62,17 +68,15 @@ impl RasterQueue {
     }
 
     pub fn cancel(&mut self, entity: Entity) {
-        let mut flagged = 0;
-        for pending in &self.0 {
-            if pending.entity == entity {
-                pending.cancel.store(true, Ordering::Relaxed);
-                flagged += 1;
-            }
-        }
-        if flagged > 0 {
-            debug!("CANCEL {entity:?}: abandoned {flagged} in-flight raster(s)");
-        }
-        self.0.retain(|pending| pending.entity != entity);
+        NonZero::new(
+            self.0
+                .extract_if(.., |pending| pending.entity == entity)
+                .inspect(|pending| {
+                    pending.cancel.store(true, Ordering::Relaxed);
+                })
+                .count(),
+        )
+        .inspect(|flagged| debug!("CANCEL {entity:?}: abandoned {flagged} in-flight raster(s)"));
     }
 
     pub fn is_busy(&self, entity: Entity) -> bool {
@@ -80,18 +84,26 @@ impl RasterQueue {
     }
 
     pub fn cancel_dead(&mut self, commands: &mut Commands) {
-        let mut dead = Vec::new();
-        for pending in &self.0 {
-            if commands.get_entity(pending.entity).is_err() {
-                dead.push(pending.entity);
-            }
-        }
-        for entity in dead {
-            self.cancel(entity);
-        }
+        self.0
+            .extract_if(.., |p| commands.get_entity(p.entity).is_err())
+            .for_each(|pending| {
+                pending.cancel.store(true, Ordering::Relaxed);
+                debug!("CANCEL {:?}: abandoned in-flight raster", pending.entity);
+            });
     }
 }
 
 pub fn cancel_rasters_for_dead_entities(mut queue: ResMut<RasterQueue>, mut commands: Commands) {
     queue.cancel_dead(&mut commands);
+}
+
+pub fn cancel_raster_on_despawn_svg(despawned: On<Despawn<Svg>>, mut queue: ResMut<RasterQueue>) {
+    queue.cancel(despawned.entity);
+}
+
+pub fn cancel_raster_on_despawn_ui_svg(
+    despawned: On<Despawn<UiSvg>>,
+    mut queue: ResMut<RasterQueue>,
+) {
+    queue.cancel(despawned.entity);
 }

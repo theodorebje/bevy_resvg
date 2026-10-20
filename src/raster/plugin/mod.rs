@@ -49,6 +49,8 @@ impl Plugin for SvgRasterPlugin {
                         .after(VisibilitySystems::CheckVisibility)
                         .after(apply::apply_finished_rasters),
                 ),
-            );
+            )
+            .add_observer(queue::cancel_raster_on_despawn_svg)
+            .add_observer(queue::cancel_raster_on_despawn_ui_svg);
     }
 }
