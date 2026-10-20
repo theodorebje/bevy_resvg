@@ -31,10 +31,6 @@ body = """
             {% if commit.footers %}
                 {% if not commit.body %}\n{% endif %}\
                 <table>
-                    <tr>
-                        <th>Token</th>
-                        <th>Value</th>
-                    </tr>
             {% endif %}\
             {% for footer in commit.footers %}\
                 <tr>

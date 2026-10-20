@@ -14,10 +14,6 @@
 
 <table>
 <tr>
-<th>Token</th>
-<th>Value</th>
-</tr>
-<tr>
 <td>Fixes</td>
 <td>#9</td>
 </tr>
@@ -32,6 +28,10 @@
 ### Styling
 
 1. Use inspect rather than if let Some
+
+### Miscellaneous Tasks
+
+1. *(release)* V3.0.1
 
 ## [3.0.0] - 2026-10-18
 
@@ -126,10 +126,6 @@ Thank you to @Mimikkk (Daniel Zdancewicz) for creating this PR!
 Thank you to @atavistock (Aaron Tavistock) for creating this PR!
 <table>
 <tr>
-<th>Token</th>
-<th>Value</th>
-</tr>
-<tr>
 <td>Co-authored-by</td>
 <td>Theodore Bjernhed <fosseder@danwin1210.de></td>
 </tr>
@@ -170,10 +166,6 @@ insertion. Due to the `read_events!` macro returning if the `svg_events`
 `MessageReader` doesn't match any of the expected `AssetEvent`s, the
 added check never actually did anything. Now it does.
 <table>
-<tr>
-<th>Token</th>
-<th>Value</th>
-</tr>
 <tr>
 <td>See</td>
 <td>5048fc6c20d690e33ea35511df1d7febc4a77386</td>
@@ -274,10 +266,6 @@ However, if one still requires configuring one of the options that
 as described in the `USAGE.md` file in the `resvg-option` branch's root.
 <table>
 <tr>
-<th>Token</th>
-<th>Value</th>
-</tr>
-<tr>
 <td>[^1]</td>
 <td><https://serde.rs/remote-derive.html></td>
 </tr>
@@ -315,10 +303,6 @@ as described in the `USAGE.md` file in the `resvg-option` branch's root.
 1. Chore: don't put chore(release) in `CHANGELOG.md`
 
 <table>
-<tr>
-<th>Token</th>
-<th>Value</th>
-</tr>
 <tr>
 <td>Refs</td>
 <td>a2c0f9d5fbd28edd84d6f2fe2e2718f05bd1bb6a</td>
@@ -387,10 +371,6 @@ not.
 
 <table>
 <tr>
-<th>Token</th>
-<th>Value</th>
-</tr>
-<tr>
 <td>NOTE</td>
 <td>`Added` isn't actually handled, but it isn't supposed to either.
 We react to `LoadedWithDependencies` instead.</td>
@@ -411,10 +391,6 @@ We react to `LoadedWithDependencies` instead.</td>
 4. Add comparison with Bevy Vello
 
 <table>
-<tr>
-<th>Token</th>
-<th>Value</th>
-</tr>
 <tr>
 <td>Link</td>
 <td>https://github.com/linebender/bevy_vello</td>
